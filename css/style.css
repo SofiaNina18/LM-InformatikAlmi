@@ -1,0 +1,170 @@
+
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Inter', -apple-system, sans-serif;
+    background-color: var(--light-bg);
+    color: var(--dark-grey);
+    line-height: 1.6;
+}
+
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 10%;
+    background: var(--white);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+#logo {
+    height: 50px;
+    width: auto;
+}
+
+header nav ul {
+    list-style: none;
+    display: flex;
+    margin: 0;
+    padding: 0;
+}
+
+header nav ul li {
+    margin-left: 2rem;
+}
+
+header nav ul li a {
+    text-decoration: none;
+    color: var(--dark-grey);
+    font-weight: 500;
+    transition: 0.3s;
+}
+
+header nav ul li a:hover {
+    color: var(--primary-green);
+}
+
+
+.titulo-principal {
+    position: relative;
+    height: 60vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    color: white;
+    text-align: center;
+}
+
+.video-background {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+    z-index: -1;
+    transform: translate(-50%, -50%);
+    filter: brightness(0.6);
+}
+
+.contenido-titulo h1 {
+    font-size: 3rem;
+    margin-bottom: 0.5rem;
+}
+
+
+.sistema {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 4rem 10%;
+    background-color: var(--white);
+}
+
+.contenido {
+    flex: 1;
+    padding-right: 2rem;
+}
+
+.contenido h1 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+}
+
+.contenido p {
+    font-size: 1.1rem;
+    margin-bottom: 2rem;
+}
+
+.boton {
+    display: inline-block;
+    padding: 0.8rem 1.5rem;
+    background-color: #00e5ff;
+    color: black;
+    text-decoration: none;
+    border-radius: 4px;
+
+}
+
+.boton:hover {
+    background-color: #7de1ec; 
+}
+
+.sistema-img {
+    flex: 1;
+}
+
+footer {
+    width: 100%;
+    background-color: #121212; 
+    padding: 20px 0;
+    display: flex;
+    justify-content: center;
+}
+
+footer .footer-interior {
+    width: 100%;
+    max-width: 1700px;
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    justify-content: space-between;
+    padding: 0 20px;
+}
+
+footer .marca {
+    color: #ffffff;
+    font-weight: 700;
+    letter-spacing: 0.6px;
+    text-decoration: none;
+    font-size: 16px;
+}
+
+footer nav { 
+    display: flex; 
+    gap: 18px; 
+    align-items: center; 
+}
+
+footer a {
+    text-decoration: none;
+    color: rgba(255,255,255,0.9);
+    font-size: 15px;
+    white-space: nowrap;
+    transition: color 0.22s ease, transform 0.12s ease;
+    padding: 6px 8px;
+    border-radius: 6px;
+}
+
+footer a:hover {
+    color: #00e5ff; 
+    transform: translateY(-2px);
+    background: rgba(0,229,255,0.04);
+}
