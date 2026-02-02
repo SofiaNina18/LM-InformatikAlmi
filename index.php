@@ -84,7 +84,7 @@ $conexion = oci_connect($user, $password, $bbdd, 'AL32UTF8');
                 </p>
 
                 <h4>Chasis ATX | Paneles IPS | 144Hz</h4>
-                <p class="pie-texto">Estética y Funcionalidad</p>
+                <p class="pie-texto">Estética y Funcionalidad12312</p>
             </div>
         </section>
 
