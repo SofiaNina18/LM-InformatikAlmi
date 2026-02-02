@@ -2,7 +2,7 @@
 
 $user = "InformatikAlmi";
 $password = "Almi12345";
-//$bbdd = "192.168.0.152/ORCLCDB"; //Conexión a BBDD Sofia
+$bbdd = "192.168.0.152/ORCLCDB"; //Conexión a BBDD Sofia
 //$bbdd = "192.168.0.136/ORCLCDB"; //Conexión a BBDD Oier
 
 
