@@ -11,6 +11,7 @@ $conexion = oci_connect($user, $password, $bbdd, 'AL32UTF8');
 
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -20,8 +21,8 @@ $conexion = oci_connect($user, $password, $bbdd, 'AL32UTF8');
     <link rel="stylesheet" href="css/style.css" />
 </head>
 
-<body class ="indice">
-    <header>    <!--encabezado-->
+<body class="indice">
+    <header> <!--encabezado-->
         <a href="index.php"> <img src="images/logo.png" id="logo" alt="Logo de la web" /> </a>
         <nav>
             <ul>
@@ -30,6 +31,8 @@ $conexion = oci_connect($user, $password, $bbdd, 'AL32UTF8');
                 <li><a href="#">Proyectos</a></li>
                 <li><a href="#">Contacto</a></li>
                 <li><a href="#">Proveedores</a></li>
+                <li><a href="#">Iniciar Sesion</a></li>
+                <li></li>
             </ul>
         </nav>
     </header>
@@ -55,18 +58,38 @@ $conexion = oci_connect($user, $password, $bbdd, 'AL32UTF8');
                 <?php endif; ?>
 
                 <h1>Potencia tu hardware, protege el <span>Planeta</span>.</h1>
-                <p>InformatikAlmi es la plataforma líder en configuración de equipos con componentes suministrados bajo criterios de sostenibilidad ASG y economía circular.</p>
+                <p>InformatikAlmi es la plataforma líder en configuración de equipos con componentes suministrados bajo
+                    criterios de sostenibilidad ASG y economía circular.</p>
                 <a href="#" class="boton">Portal de Proveedores</a>
             </div>
-           
+
         </section>
-    </section>        
+        <section class="primera">
+            <div class="foto">
+                <img src="images/foto3.png" alt="Hardware de alto rendimiento de SAYO">
+            </div>
+
+            <div class="texto">
+                <h2>Rendimiento <br> a plena capacidad</h2>
+
+                <p>
+                    En <strong>SAYO</strong>, transformamos la potencia en eficiencia. Nuestra plataforma
+                    garantiza una gestión fluida de hardware de última generación, seleccionando componentes
+                    bajo estrictos criterios de sostenibilidad y economía circular para proteger el planeta
+                    mientras potencias tu trabajo.
+                </p>
+
+                <h4>CPU | GPU | RAM | Sostenibilidad ASG</h4>
+                <p class="pie-texto">Compromiso con el alto rendimiento</p>
+            </div>
+        </section>
+    </section>
     </main>
 
     <footer>
         <div class="footer-interior">
             <a href="index.php" class="marca">SAYO</a>
-            
+
             <nav>
                 <a href="#">Sobre nosotros</a>
                 <a href="#">Condiciones legales</a>
@@ -75,6 +98,6 @@ $conexion = oci_connect($user, $password, $bbdd, 'AL32UTF8');
         </div>
     </footer>
 
-</body>    
-</html>
+</body>
 
+</html>
