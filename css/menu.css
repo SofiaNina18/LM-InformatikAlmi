@@ -1,0 +1,73 @@
+.menu {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 4%;
+    position: fixed;
+    width: 100%;
+    height: 80px;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    box-sizing: border-box;
+    background: rgba(0, 0, 0, 0.85); 
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    transition: all 0.4s ease;
+}
+
+.contenido {
+    flex-grow: 1;
+    display: flex;
+    justify-content: flex-end;
+    overflow: hidden;
+}
+
+.lista {
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    gap: clamp(8px, 1.5vw, 25px); 
+    align-items: center;
+}
+
+.lista li a {
+    text-decoration: none;
+    color: #ffffff !important;
+    mix-blend-mode: difference;
+    font-family: 'Segoe UI', sans-serif;
+    font-weight: 600;
+    font-size: clamp(10px, 0.8vw, 14px); 
+    text-transform: uppercase;
+    white-space: nowrap;
+    transition: 0.3s ease;
+}
+
+.lista li a:hover {
+    color: #5a5a5a !important;
+}
+
+.iniciar {
+    border: 2px solid #00e5ff;
+    padding: 8px 16px;
+    border-radius: 5px;
+    background: rgba(0, 229, 255, 0.05);
+}
+
+.iniciar:hover {
+    background: #00e5ff;
+    color: #000000 !important;
+    mix-blend-mode: normal;
+}
+
+#logo {
+    height: 50px;
+    width: auto;
+    display: block;
+    flex-shrink: 0;
+}
+
+body {
+    padding-top: 80px;
+}

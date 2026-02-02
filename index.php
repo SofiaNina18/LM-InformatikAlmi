@@ -19,23 +19,11 @@ $conexion = oci_connect($user, $password, $bbdd, 'AL32UTF8');
     <meta name="description" content="página de informática, es una pagina informativa" />
     <meta name="keywords" content="informatica, sostenibilidad" />
     <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/menu.css" />
 </head>
 
 <body class="indice">
-    <header> <!--encabezado-->
-        <a href="index.php"> <img src="images/logo.png" id="logo" alt="Logo de la web" /> </a>
-        <nav>
-            <ul>
-                <li><a href="#">Servicios</a></li>
-                <li><a href="#">Tecnología</a></li>
-                <li><a href="#">Proyectos</a></li>
-                <li><a href="#">Contacto</a></li>
-                <li><a href="#">Proveedores</a></li>
-                <li><a href="#">Iniciar Sesion</a></li>
-                <li></li>
-            </ul>
-        </nav>
-    </header>
+    <?php include 'menu.php'; ?>
 
     <section class="inicio">
         <section class="titulo-principal">
@@ -50,7 +38,7 @@ $conexion = oci_connect($user, $password, $bbdd, 'AL32UTF8');
         </section>
 
         <section class="sistema" id="inicio">
-            <div class="contenido">
+            <div class="contenido-encendido">
                 <?php if ($conexion): ?>
                     <p style="color: green;">● Sistema Conectado a Oracle</p>
                 <?php else: ?>
@@ -83,8 +71,59 @@ $conexion = oci_connect($user, $password, $bbdd, 'AL32UTF8');
                 <p class="pie-texto">Compromiso con el alto rendimiento</p>
             </div>
         </section>
+
+        <section class="segunda">
+            <div class="texto">
+                <h2>Torres & Monitores</h2>
+
+                <p>
+                    La base de una gran experiencia comienza con una estructura sólida y una visualización perfecta.
+                    En <strong>SAYO</strong>, ofrecemos torres con flujo de aire optimizado y monitores de alta
+                    fidelidad
+                    que transforman tu manera de trabajar y jugar.
+                </p>
+
+                <h4>Chasis ATX | Paneles IPS | 144Hz</h4>
+                <p class="pie-texto">Estética y Funcionalidad</p>
+            </div>
+        </section>
+
+        <section class="tercera">
+            <h2>Productos de soporte</h2>
+
+            <div class="cuadricula-productos">
+                <div class="tarjeta-producto">
+                    <img src="images/foto4.png" alt="Portátil">
+                    <h3>Portátil</h3>
+                </div>
+
+                <div class="tarjeta-producto">
+                    <img src="images/foto5.png" alt="Consola Portátil">
+                    <h3>Consola</h3>
+                </div>
+
+                <div class="tarjeta-producto">
+                    <img src="images/foto6.png" alt="Tarjeta Gráfica">
+                    <h3>Tarjeta gráfica</h3>
+                </div>
+
+                <div class="tarjeta-producto">
+                    <img src="images/foto7.png" alt="Placa Base">
+                    <h3>Placa base</h3>
+                </div>
+
+                <div class="tarjeta-producto">
+                    <img src="images/foto2.png" alt="Escritorio">
+                    <h3>Escritorio</h3>
+                </div>
+
+                <div class="tarjeta-producto">
+                    <img src="images/foto9.png" alt="Monitor">
+                    <h3>Monitor</h3>
+                </div>
+            </div>
+        </section>
     </section>
-    </main>
 
     <footer>
         <div class="footer-interior">
