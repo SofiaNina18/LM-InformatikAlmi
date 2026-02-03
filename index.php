@@ -30,7 +30,7 @@ $conexion = oci_connect($user, $password, $bbdd, 'AL32UTF8');
 
         <section class="fondo">
             <video autoplay muted loop class="fondo-video">
-                <source src="videos/fondo.mp4" type="video/mp4">
+                <source src="videos/Fondo.mp4" type="video/mp4">
                 Tu navegador no soporta el video.
             </video>
             <div class="overlay"></div>
