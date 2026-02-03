@@ -27,32 +27,20 @@ $conexion = oci_connect($user, $password, $bbdd, 'AL32UTF8');
     <?php include 'menu.php'; ?>
 
     <section class="inicio">
-        <section class="titulo-principal">
-            <video autoplay muted loop class="video-background">
-                <source src="videos/video.mp4" type="video/mp4">
+
+        <section class="fondo">
+            <video autoplay muted loop class="fondo-video">
+                <source src="videos/fondo.mp4" type="video/mp4">
                 Tu navegador no soporta el video.
             </video>
-            <div class="contenido-titulo">
-                <h1>Bienvenido a SAYO</h1>
-                <p>Desarrollamos software y aplicaciones a medida para empresas y particulares.</p>
+            <div class="overlay"></div>
+
+            <div class="titulo">
+                <h1 class="bienvenido">Bienvenido a SAYO</h1>
+                <p class="texto-animado">Desarrollamos software y aplicaciones a medida para empresas y particulares.</p>
             </div>
         </section>
 
-        <section class="sistema" id="inicio">
-            <div class="contenido-encendido">
-                <?php if ($conexion): ?>
-                    <p style="color: green;">● Sistema Conectado a Oracle</p>
-                <?php else: ?>
-                    <p style="color: red;">○ Sin conexión</p>
-                <?php endif; ?>
-
-                <h1>Potencia tu hardware, protege el <span>Planeta</span>.</h1>
-                <p>InformatikAlmi es la plataforma líder en configuración de equipos con componentes suministrados bajo
-                    criterios de sostenibilidad ASG y economía circular.</p>
-                <a href="#" class="boton">Portal de Proveedores</a>
-            </div>
-
-        </section>
         <section class="primera">
             <div class="foto">
                 <img src="images/foto3.png" alt="Hardware de alto rendimiento de SAYO">
