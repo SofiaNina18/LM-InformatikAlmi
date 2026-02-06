@@ -37,7 +37,8 @@ $conexion = oci_connect($user, $password, $bbdd, 'AL32UTF8');
 
             <div class="titulo">
                 <h1 class="bienvenido">Bienvenido a SAYO</h1>
-                <p class="texto-animado">Desarrollamos software y aplicaciones a medida para empresas y particulares.</p>
+                <p class="texto-animado">Soluciones a medida en hardware y componentes informáticos <br>
+                    certificados para potenciar tu productividad y eficiencia.</p>
             </div>
         </section>
 
