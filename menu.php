@@ -9,11 +9,10 @@ if (session_status() === PHP_SESSION_NONE) {
     </div>
     <nav class="contenido">
         <ul class="lista">
-            <li><a href="index.php">Servicios</a></li>
-            <li><a href="#">Tecnología</a></li>
-            <li><a href="#">Proyectos</a></li>
-            <li><a href="#">Contacto</a></li>
-            <li><a href="#">Proveedores</a></li>>
+            <li><a href="servicios.php">Servicios</a></li>
+            <li><a href="tecnologias.php">Tecnología</a></li>
+            <li><a href="proyectos.php">Proyectos</a></li>
+            <li><a href="contacto.php">Contacto</a></li>
             
             <?php if (isset($_SESSION['usuario'])): ?>
                 <li><a href="#" class="iniciar">Cerrar Sesión</a></li>
