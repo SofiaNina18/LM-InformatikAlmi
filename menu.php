@@ -13,8 +13,7 @@ if (session_status() === PHP_SESSION_NONE) {
             <li><a href="#">Tecnología</a></li>
             <li><a href="#">Proyectos</a></li>
             <li><a href="#">Contacto</a></li>
-            <li><a href="#">Proveedores</a></li>
-            <li><a href="#">Atención Cliente</a></li>
+            <li><a href="#">Proveedores</a></li>>
             
             <?php if (isset($_SESSION['usuario'])): ?>
                 <li><a href="#" class="iniciar">Cerrar Sesión</a></li>
