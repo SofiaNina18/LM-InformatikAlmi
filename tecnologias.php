@@ -1,5 +1,4 @@
 <?php 
-// 1. Conexión y Sesión
 include_once 'bbdd.php'; 
 if (session_status() === PHP_SESSION_NONE) session_start();
 ?>
