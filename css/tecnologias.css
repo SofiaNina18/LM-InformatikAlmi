@@ -1,0 +1,142 @@
+body.pag-tecnologia {
+    background-color: #000000 !important;
+    color: #ffffff !important;
+    font-family: sans-serif;
+    margin: 0;
+    padding-top: 100px;
+    /* Espacio para el menú */
+}
+
+/* TÍTULO PRINCIPAL */
+.cabecera-tech {
+    text-align: center;
+    padding: 40px 20px;
+    border-bottom: 2px solid #333;
+}
+
+.cabecera-tech h1 {
+    color: #00e5ff;
+    text-transform: uppercase;
+    font-size: 3rem;
+    margin: 0;
+}
+
+/* CONTENEDOR */
+.contenedor-principal {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 40px 20px;
+}
+
+/* TÍTULOS DE LAS SECCIONES (Nuestros Portátiles, etc.) */
+.titulo-seccion {
+    color: #ffffff !important;
+    /* BLANCO OBLIGADO */
+    font-size: 2.2rem;
+    text-transform: uppercase;
+    border-left: 5px solid #00e5ff;
+    padding-left: 20px;
+    margin-top: 60px;
+    margin-bottom: 30px;
+    font-weight: bold;
+}
+
+/* --- LA CUADRÍCULA DE 3 --- */
+.grid-3-columnas {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    /* 3 COLUMNAS SIEMPRE */
+    gap: 40px;
+    /* Espacio entre cuadros */
+    width: 100%;
+}
+
+/* LA TARJETA DEL PRODUCTO */
+.tarjeta-producto {
+    background-color: #111;
+    /* Fondo gris muy oscuro */
+    border: 1px solid #333;
+    border-radius: 10px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.3s;
+}
+
+.tarjeta-producto:hover {
+    transform: translateY(-5px);
+    border-color: #00e5ff;
+}
+
+/* CAJA DE LA IMAGEN */
+.img-wrap {
+    height: 250px;
+    background-color: #ffffff;
+    /* FONDO BLANCO PARA LA FOTO */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 15px;
+}
+
+.img-wrap img {
+    max-width: 95%;
+    max-height: 95%;
+    object-fit: contain;
+}
+
+/* TEXTOS DE LA TARJETA */
+.contenido-tarjeta {
+    padding: 20px;
+    text-align: center;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.contenido-tarjeta h3 {
+    color: #ffffff !important;
+    /* TÍTULO EN BLANCO */
+    font-size: 1.4rem;
+    margin-bottom: 10px;
+}
+
+.contenido-tarjeta .resumen {
+    color: #cccccc !important;
+    /* RESUMEN EN GRIS CLARO */
+    font-size: 0.95rem;
+    margin-bottom: 20px;
+    flex-grow: 1;
+}
+
+/* BOTÓN VER MÁS */
+.btn-ver-mas {
+    display: inline-block;
+    padding: 10px 25px;
+    border: 1px solid #00e5ff;
+    color: #00e5ff !important;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
+    transition: 0.3s;
+    margin-top: auto;
+    /* Empuja el botón al fondo */
+}
+
+.btn-ver-mas:hover {
+    background-color: #00e5ff;
+    color: #000000 !important;
+}
+
+/* RESPONSIVO */
+@media (max-width: 1000px) {
+    .grid-3-columnas {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 600px) {
+    .grid-3-columnas {
+        grid-template-columns: 1fr;
+    }
+}

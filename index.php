@@ -1,13 +1,5 @@
 <?php
-
-$user = "InformatikAlmi";
-$password = "Almi12345";
-//$bbdd = "192.168.0.152/ORCLCDB"; //Conexión a BBDD Sofia
-//$bbdd = "192.168.0.136/ORCLCDB"; //Conexión a BBDD Oier
-$bbdd = "10.94.20.122/ORCLCDB"; //Conexión Sofia
-
-
-$conexion = oci_connect($user, $password, $bbdd, 'AL32UTF8');
+    include_once 'bbdd.php'
 ?>
 
 <!DOCTYPE html>

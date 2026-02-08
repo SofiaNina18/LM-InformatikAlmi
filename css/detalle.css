@@ -1,0 +1,118 @@
+.pag-detalle {
+    background-color: #121212; /* Fondo muy oscuro casi negro */
+    color: white;
+    font-family: 'Segoe UI', sans-serif;
+    padding-top: 100px;
+}
+
+.contenedor-detalle {
+    max-width: 1300px;
+    margin: 0 auto;
+    padding: 40px;
+    display: flex;
+    gap: 60px; /* Separación amplia entre foto y texto */
+    align-items: flex-start;
+}
+
+/* --- IZQUIERDA --- */
+.zona-galeria {
+    flex: 1; /* 50% ancho */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.marco-principal {
+    width: 100%;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.marco-principal img {
+    max-width: 100%;
+    height: auto;
+    max-height: 400px;
+    object-fit: contain;
+}
+
+.tira-miniaturas {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+}
+
+.thumb {
+    width: 60px;
+    height: 40px;
+    object-fit: contain;
+    background: #000;
+    border: 1px solid #444;
+    cursor: pointer;
+    opacity: 0.6;
+    transition: 0.3s;
+}
+
+.thumb:hover, .thumb.activo {
+    opacity: 1;
+    border-color: #fff;
+}
+
+/* --- DERECHA --- */
+.zona-info {
+    flex: 1.2; /* Un poco más ancho que la foto */
+}
+
+.titulo-prod {
+    font-size: 2.2rem;
+    font-weight: bold;
+    margin-bottom: 5px;
+    color: #fff;
+}
+
+.subtitulo-prod {
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: #fff;
+    margin-top: 0;
+    margin-bottom: 30px;
+}
+
+.descripcion-completa {
+    font-size: 1rem;
+    line-height: 1.8; /* Espacio entre líneas para leer bien */
+    color: #e0e0e0;
+    margin-bottom: 40px;
+}
+
+/* Esto simula los puntos de lista si el texto no tiene <ul> */
+.descripcion-completa {
+    white-space: pre-wrap; /* Respeta espacios y saltos extra */
+}
+
+.zona-precio {
+    font-size: 2rem;
+    color: #00e5ff;
+    font-weight: bold;
+    margin-bottom: 30px;
+}
+
+.btn-volver {
+    display: inline-block;
+    padding: 10px 30px;
+    border: 2px solid white;
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.btn-volver:hover {
+    background: white;
+    color: black;
+}
+
+@media (max-width: 900px) {
+    .contenedor-detalle {
+        flex-direction: column;
+    }
+}
