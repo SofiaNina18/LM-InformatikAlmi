@@ -1,0 +1,127 @@
+body.añadir {
+    background-color: #000000;
+    color: white;
+    font-family: 'Segoe UI', sans-serif;
+    padding-top: 100px;
+    min-height: 100vh;
+}
+
+.administracion {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.administracion h1 {
+    text-align: center;
+    color: #00e5ff;
+    text-transform: uppercase;
+    margin-bottom: 30px;
+    border-bottom: 2px solid #333;
+    padding-bottom: 15px;
+}
+
+form.formulario {
+    background-color: #0a0a0a;
+    padding: 40px;
+    border-radius: 15px;
+    border: 1px solid #333;
+    box-shadow: 0 0 40px rgba(0,0,0,0.5);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+}
+
+.relleno {
+    display: flex;
+    flex-direction: column;
+}
+
+.relleno-texto {
+    grid-column: 1 / -1;
+    display: flex;
+    flex-direction: column;
+}
+
+.relleno label,
+.relleno-texto label {
+    margin-bottom: 10px;
+    color: #cccccc;
+    font-weight: 600;
+    font-size: 0.95rem;
+}
+
+.relleno input,
+.relleno select,
+.relleno-texto input,
+.relleno-texto textarea {
+    background-color: #111;
+    border: 1px solid #444;
+    padding: 12px;
+    color: white;
+    border-radius: 5px;
+    font-size: 1rem;
+    outline: none;
+    transition: 0.3s;
+}
+
+.relleno input:focus,
+.relleno select:focus,
+.relleno-texto input:focus,
+.relleno-texto textarea:focus {
+    border-color: #00e5ff;
+    box-shadow: 0 0 10px rgba(0, 229, 255, 0.2);
+}
+
+.nota {
+    font-size: 0.85rem;
+    color: #888;
+    margin-top: -5px;
+    margin-bottom: 8px;
+}
+
+textarea {
+    resize: vertical;
+    line-height: 1.5;
+}
+
+.guardar {
+    grid-column: 1 / -1;
+    background-color: transparent;
+    border: 2px solid #00e5ff;
+    color: #00e5ff;
+    font-weight: bold;
+    font-size: 1.1rem;
+    padding: 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    text-transform: uppercase;
+    transition: 0.3s;
+    margin-top: 20px;
+}
+
+.guardar:hover {
+    background-color: #00e5ff;
+    color: #000;
+    box-shadow: 0 0 20px rgba(0, 229, 255, 0.5);
+}
+
+.alerta {
+    padding: 15px;
+    margin-bottom: 30px;
+    border-radius: 5px;
+    text-align: center;
+    font-weight: bold;
+}
+
+.alerta.exito {
+    background-color: rgba(0, 229, 76, 0.15);
+    border: 1px solid #00e54c;
+    color: #00e54c;
+}
+
+.alerta.error {
+    background-color: rgba(255, 51, 51, 0.15);
+    border: 1px solid #ff3333;
+    color: #ff3333;
+}
