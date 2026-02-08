@@ -4,10 +4,9 @@ body.pag-tecnologia {
     font-family: sans-serif;
     margin: 0;
     padding-top: 100px;
-    /* Espacio para el menú */
+    
 }
 
-/* TÍTULO PRINCIPAL */
 .cabecera-tech {
     text-align: center;
     padding: 40px 20px;
@@ -21,14 +20,12 @@ body.pag-tecnologia {
     margin: 0;
 }
 
-/* CONTENEDOR */
 .contenedor-principal {
     max-width: 1400px;
     margin: 0 auto;
     padding: 40px 20px;
 }
 
-/* TÍTULOS DE LAS SECCIONES (Nuestros Portátiles, etc.) */
 .titulo-seccion {
     color: #ffffff !important;
     /* BLANCO OBLIGADO */
@@ -41,20 +38,15 @@ body.pag-tecnologia {
     font-weight: bold;
 }
 
-/* --- LA CUADRÍCULA DE 3 --- */
 .grid-3-columnas {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    /* 3 COLUMNAS SIEMPRE */
     gap: 40px;
-    /* Espacio entre cuadros */
     width: 100%;
 }
 
-/* LA TARJETA DEL PRODUCTO */
 .tarjeta-producto {
     background-color: #111;
-    /* Fondo gris muy oscuro */
     border: 1px solid #333;
     border-radius: 10px;
     overflow: hidden;
@@ -68,11 +60,9 @@ body.pag-tecnologia {
     border-color: #00e5ff;
 }
 
-/* CAJA DE LA IMAGEN */
 .img-wrap {
     height: 250px;
     background-color: #ffffff;
-    /* FONDO BLANCO PARA LA FOTO */
     display: flex;
     align-items: center;
     justify-content: center;
@@ -85,7 +75,6 @@ body.pag-tecnologia {
     object-fit: contain;
 }
 
-/* TEXTOS DE LA TARJETA */
 .contenido-tarjeta {
     padding: 20px;
     text-align: center;
@@ -96,20 +85,17 @@ body.pag-tecnologia {
 
 .contenido-tarjeta h3 {
     color: #ffffff !important;
-    /* TÍTULO EN BLANCO */
     font-size: 1.4rem;
     margin-bottom: 10px;
 }
 
 .contenido-tarjeta .resumen {
     color: #cccccc !important;
-    /* RESUMEN EN GRIS CLARO */
     font-size: 0.95rem;
     margin-bottom: 20px;
     flex-grow: 1;
 }
 
-/* BOTÓN VER MÁS */
 .btn-ver-mas {
     display: inline-block;
     padding: 10px 25px;
@@ -120,7 +106,6 @@ body.pag-tecnologia {
     font-weight: bold;
     transition: 0.3s;
     margin-top: auto;
-    /* Empuja el botón al fondo */
 }
 
 .btn-ver-mas:hover {
@@ -128,15 +113,18 @@ body.pag-tecnologia {
     color: #000000 !important;
 }
 
-/* RESPONSIVO */
-@media (max-width: 1000px) {
-    .grid-3-columnas {
-        grid-template-columns: repeat(2, 1fr);
-    }
+
+.subtitulo-tech {
+    color: #aaaaaa;
+    text-align: center;
 }
 
-@media (max-width: 600px) {
-    .grid-3-columnas {
-        grid-template-columns: 1fr;
-    }
+.texto-proximamente {
+    color: #666666;
+    margin-top: 10px;
 }
+
+.espaciador-final {
+    height: 100px;
+}
+

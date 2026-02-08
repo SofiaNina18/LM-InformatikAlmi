@@ -1,118 +1,142 @@
-.pag-detalle {
-    background-color: #121212; /* Fondo muy oscuro casi negro */
-    color: white;
+
+body.pag-detalle {
+    background-color: #000000 !important; 
+    color: #ffffff !important;            
     font-family: 'Segoe UI', sans-serif;
-    padding-top: 100px;
-}
-
-.contenedor-detalle {
-    max-width: 1300px;
-    margin: 0 auto;
-    padding: 40px;
-    display: flex;
-    gap: 60px; /* Separación amplia entre foto y texto */
-    align-items: flex-start;
-}
-
-/* --- IZQUIERDA --- */
-.zona-galeria {
-    flex: 1; /* 50% ancho */
+    margin: 0;
+    padding-top: 100px; 
+    min-height: 100vh;
     display: flex;
     flex-direction: column;
+}
+
+.contenedor-producto {
+    flex-grow: 1;
+    width: 90%;
+    max-width: 1400px;
+    margin: 40px auto;
+    background-color: #0a0a0a; 
+    border: 1px solid #333;
+    border-radius: 20px;
+    box-shadow: 0 0 40px rgba(0,0,0,0.8); 
+    
+    display: flex;
+    overflow: hidden;
+}
+
+
+.columna-fotos {
+    width: 50%;
+    background-color: #0f0f0f; 
+    border-right: 1px solid #333;
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
     align-items: center;
 }
 
-.marco-principal {
+.marco-grande {
     width: 100%;
+    height: 450px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     margin-bottom: 20px;
-    text-align: center;
+    /* Brillo sutil detrás del producto */
+    background: radial-gradient(circle, rgba(255,255,255,0.05) 0%, rgba(0,0,0,0) 70%);
 }
 
-.marco-principal img {
+.marco-grande img {
     max-width: 100%;
-    height: auto;
-    max-height: 400px;
+    max-height: 100%;
     object-fit: contain;
+    transition: opacity 0.3s;
+    filter: drop-shadow(0 10px 10px rgba(0,0,0,0.5));
 }
 
+/* Tira de miniaturas */
 .tira-miniaturas {
     display: flex;
     gap: 15px;
+    flex-wrap: wrap;
     justify-content: center;
 }
 
 .thumb {
-    width: 60px;
-    height: 40px;
-    object-fit: contain;
-    background: #000;
+    width: 80px;
+    height: 60px;
+    background-color: #1a1a1a;
     border: 1px solid #444;
+    border-radius: 8px;
+    padding: 5px;
     cursor: pointer;
-    opacity: 0.6;
-    transition: 0.3s;
+    object-fit: contain;
+    transition: 0.2s;
 }
 
-.thumb:hover, .thumb.activo {
-    opacity: 1;
-    border-color: #fff;
-}
+.thumb:hover { border-color: #00e5ff; }
+.thumb.activo { border-color: #00e5ff; box-shadow: 0 0 10px rgba(0,229,255,0.3); }
 
-/* --- DERECHA --- */
-.zona-info {
-    flex: 1.2; /* Un poco más ancho que la foto */
+.columna-info {
+    width: 50%;
+    padding: 50px;
+    display: flex;
+    flex-direction: column;
+    background: linear-gradient(135deg, #0a0a0a 0%, #000 100%);
 }
 
 .titulo-prod {
-    font-size: 2.2rem;
-    font-weight: bold;
-    margin-bottom: 5px;
-    color: #fff;
-}
-
-.subtitulo-prod {
-    font-size: 1.8rem;
-    font-weight: bold;
-    color: #fff;
+    font-size: 2.5rem;
+    color: #ffffff;
     margin-top: 0;
-    margin-bottom: 30px;
+    margin-bottom: 20px;
+    line-height: 1.1;
+    text-transform: uppercase;
 }
 
-.descripcion-completa {
+
+.descripcion-bloque {
     font-size: 1rem;
-    line-height: 1.8; /* Espacio entre líneas para leer bien */
-    color: #e0e0e0;
+    line-height: 1.8;
+    color: #cccccc; 
     margin-bottom: 40px;
+    flex-grow: 1;
+    max-height: 400px;
+    overflow-y: auto;
+    padding-right: 15px;
+    border-left: 2px solid #333;
+    padding-left: 20px;
 }
 
-/* Esto simula los puntos de lista si el texto no tiene <ul> */
-.descripcion-completa {
-    white-space: pre-wrap; /* Respeta espacios y saltos extra */
-}
 
-.zona-precio {
-    font-size: 2rem;
-    color: #00e5ff;
+.descripcion-bloque::-webkit-scrollbar { width: 8px; }
+.descripcion-bloque::-webkit-scrollbar-track { background: #111; }
+.descripcion-bloque::-webkit-scrollbar-thumb { background: #444; border-radius: 4px; }
+
+
+.precio-final {
+    font-size: 3.5rem;
+    color: #00e5ff; 
     font-weight: bold;
     margin-bottom: 30px;
+    text-shadow: 0 0 20px rgba(0, 229, 255, 0.4);
 }
+
 
 .btn-volver {
-    display: inline-block;
-    padding: 10px 30px;
-    border: 2px solid white;
+    padding: 12px 30px;
+    background: transparent;
+    border: 1px solid white;
     color: white;
     text-decoration: none;
     font-weight: bold;
+    border-radius: 5px;
     transition: 0.3s;
+    width: fit-content;
 }
 
 .btn-volver:hover {
-    background: white;
-    color: black;
-}
-
-@media (max-width: 900px) {
-    .contenedor-detalle {
-        flex-direction: column;
-    }
+    background: #fff;
+    color: #000;
 }

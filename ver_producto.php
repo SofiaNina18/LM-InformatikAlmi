@@ -1,13 +1,19 @@
 <?php
+
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
+
 include_once 'bbdd.php';
 
+
 if (!isset($_GET['id'])) {
-    header("Location: tecnologia.php");
+    header("Location: tecnologias.php");
     exit;
 }
 $id = $_GET['id'];
 
-// 1. PRODUCTO PRINCIPAL
+
 $sql = "SELECT * FROM PRODUCTOS WHERE id_producto = :id";
 $stmt = oci_parse($conexion, $sql);
 oci_bind_by_name($stmt, ":id", $id);
@@ -16,34 +22,36 @@ $producto = oci_fetch_assoc($stmt);
 
 if (!$producto) { echo "Producto no encontrado"; exit; }
 
-// 2. GALERÍA
 $sql_gal = "SELECT imagen FROM IMAGENES_GALERIA WHERE id_producto = :id";
 $stmt_gal = oci_parse($conexion, $sql_gal);
 oci_bind_by_name($stmt_gal, ":id", $id);
 oci_execute($stmt_gal);
+
+
+$desc_obj = $producto['DESCRIPCION'];
+$desc_texto = is_object($desc_obj) ? $desc_obj->load() : $desc_obj;
+$desc_html = nl2br($desc_texto);
 ?>
 
 <!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <title><?php echo $producto['TITULO']; ?></title>
+    <title><?php echo $producto['TITULO']; ?> - SAYO</title>
+    
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/menu.css">
     <link rel="stylesheet" href="css/detalle.css">
 </head>
+
 <body class="pag-detalle">
 
     <?php include 'menu.php'; ?>
 
-    <main class="contenedor-detalle">
+    <div class="contenedor-producto">
         
-        <div class="zona-galeria">
-            <div class="logo-copilot">
-                <img src="images/logo_copilot.png" alt="Copilot+PC" style="width: 150px; display: none;"> 
-            </div>
-
-            <div class="marco-principal">
+        <div class="columna-fotos">
+            <div class="marco-grande">
                 <img id="imgGrande" src="<?php echo $producto['IMAGEN']; ?>" alt="Producto">
             </div>
             
@@ -58,37 +66,34 @@ oci_execute($stmt_gal);
             </div>
         </div>
 
-        <div class="zona-info">
+        <div class="columna-info">
             <h1 class="titulo-prod"><?php echo $producto['TITULO']; ?></h1>
-            <h2 class="subtitulo-prod">Copilot+ PC</h2> <div class="descripcion-completa">
-                <?php 
-                // AQUÍ ESTÁ LA SOLUCIÓN AL TEXTO CORTADO
-                // 1. Cargamos el objeto CLOB
-                if (is_object($producto['DESCRIPCION'])) {
-                    $texto_completo = $producto['DESCRIPCION']->load();
-                } else {
-                    $texto_completo = $producto['DESCRIPCION'];
-                }
-                
-                // 2. Convertimos saltos de línea en <br> HTML
-                echo nl2br($texto_completo); 
-                ?>
-            </div>
             
-            <div class="zona-precio">
-                Precio: <?php echo $producto['PRECIO']; ?> €
+            <div class="descripcion-bloque">
+                <?php echo $desc_html; ?>
             </div>
 
-            <a href="tecnologia.php" class="btn-volver">← Volver</a>
+            <div class="precio-final">
+                <?php echo number_format($producto['PRECIO'], 2, ',', '.'); ?> €
+            </div>
+
+            <a href="tecnologias.php" class="btn-volver">← Volver al Catálogo</a>
         </div>
-    </main>
+
+    </div>
 
     <script>
         function cambiarFoto(peque) {
-            document.getElementById('imgGrande').src = peque.src;
+            let grande = document.getElementById('imgGrande');
+            grande.style.opacity = 0;
+            setTimeout(() => {
+                grande.src = peque.src;
+                grande.style.opacity = 1;
+            }, 200);
             document.querySelectorAll('.thumb').forEach(t => t.classList.remove('activo'));
             peque.classList.add('activo');
         }
     </script>
+
 </body>
 </html>

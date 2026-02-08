@@ -20,12 +20,12 @@ if (session_status() === PHP_SESSION_NONE) session_start();
 
     <header class="cabecera-tech">
         <h1>CATÁLOGO SAYO</h1>
-        <p style="color: #aaa;">Hardware de alto rendimiento</p>
+        <p class="subtitulo-tech">Hardware de alto rendimiento</p>
     </header>
 
     <main class="contenedor-principal">
         <?php
-        // 1. OBTENER CATEGORÍAS
+       
         $sql_cat = "SELECT * FROM CATEGORIAS ORDER BY id_categoria ASC";
         $stmt_cat = oci_parse($conexion, $sql_cat);
         oci_execute($stmt_cat);
@@ -34,13 +34,13 @@ if (session_status() === PHP_SESSION_NONE) session_start();
             $id_cat = $cat['ID_CATEGORIA'];
             $nombre_cat = $cat['NOMBRE_CATEGORIA'];
 
-            // ID para el ancla
+           
             $ancla = strtolower(str_replace(['á','é','í','ó','ú',' '], ['a','e','i','o','u',''], $nombre_cat));
             if(strpos($ancla, 'grafica') !== false) $ancla = 'grafica';
 
-            echo "<section id='$ancla'>"; // Sección contenedora
+            echo "<section id='$ancla'>"; 
 
-            // --- LÓGICA DE TÍTULOS PERSONALIZADOS ---
+            
             $titulo_bonito = $nombre_cat;
             if ($nombre_cat == 'Portátil') $titulo_bonito = "Nuestros Portátiles";
             elseif ($nombre_cat == 'Consola') $titulo_bonito = "Nuestras Consolas";
@@ -49,22 +49,19 @@ if (session_status() === PHP_SESSION_NONE) session_start();
             elseif ($nombre_cat == 'Escritorio') $titulo_bonito = "Escritorios Gaming";
             elseif ($nombre_cat == 'Monitor') $titulo_bonito = "Monitores";
 
-            // IMPRIMIMOS EL TÍTULO
             echo "<h2 class='titulo-seccion'>$titulo_bonito</h2>";
 
-            // 2. OBTENER PRODUCTOS
+            
             $sql_prod = "SELECT * FROM PRODUCTOS WHERE id_categoria = :id";
             $stmt_prod = oci_parse($conexion, $sql_prod);
             oci_bind_by_name($stmt_prod, ":id", $id_cat);
             oci_execute($stmt_prod);
 
-            // ABRIMOS LA REJILLA (GRID)
             echo "<div class='grid-3-columnas'>";
 
             $hay_productos = false;
             while ($prod = oci_fetch_assoc($stmt_prod)) {
                 $hay_productos = true;
-                // Si no hay imagen en BD, ponemos una por defecto
                 $img = $prod['IMAGEN'] ? $prod['IMAGEN'] : 'images/sin_imagen.png';
                 
                 echo "
@@ -81,23 +78,28 @@ if (session_status() === PHP_SESSION_NONE) session_start();
                 ";
             }
             
-            // CIERRE DE REJILLA
             echo "</div>";
 
             if (!$hay_productos) {
-                echo "<p style='color: #666; margin-top:10px;'>Próximamente...</p>";
+                echo "<p class='texto-proximamente'>Próximamente...</p>";
             }
 
-            echo "</section>"; // Fin sección
+            echo "</section>"; 
         }
         ?>
     </main>
     
-    <div style="height: 100px;"></div>
+    <div class="espaciador-final"></div>
 
-    <footer>
-        <div class="footer-interior" style="text-align: center; padding: 20px; color: #fff;">
-             <a href="index.php" style="color:#00e5ff; text-decoration:none; font-weight:bold; font-size: 1.5rem;">SAYO</a>
+   <footer>
+        <div class="footer-interior">
+            <a href="index.php" class="marca">SAYO</a>
+
+            <nav>
+                <a href="#">Sobre nosotros</a>
+                <a href="#">Condiciones legales</a>
+                <a href="#">Contacto</a>
+            </nav>
         </div>
     </footer>
 
