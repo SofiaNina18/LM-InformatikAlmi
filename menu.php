@@ -27,6 +27,9 @@ if (session_status() === PHP_SESSION_NONE) {
             <li><a href="contacto.php">Contacto</a></li>
             
             <?php if (isset($_SESSION['usuario'])): ?>
+                <li><a href="anadir_producto.php">Añadir Producto</a></li>
+                <li><a href="gestionar_productos.php">Gestionar Productos</a></li>
+                
                 <li><a href="cerrar-sesion.php" class="iniciar cerrar">Cerrar Sesión</a></li>
             <?php else: ?>
                 <li><a href="iniciar-usuario.php" class="iniciar">Iniciar Sesion</a></li>
