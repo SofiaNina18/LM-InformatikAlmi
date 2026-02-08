@@ -115,3 +115,20 @@ tr:last-child td {
     color: #fff;
     text-shadow: 0 0 10px #ff3333;
 }
+
+@media (max-width: 768px) {
+    th, td {
+        padding: 10px;
+        font-size: 0.85rem;
+    }
+    
+    .col-img img {
+        width: 40px;
+        height: 40px;
+    }
+
+    .editar, .eliminar {
+        display: block;
+        margin: 5px 0;
+    }
+}

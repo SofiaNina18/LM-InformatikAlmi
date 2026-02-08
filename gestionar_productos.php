@@ -8,18 +8,22 @@ if (!isset($_SESSION['usuario'])) {
 
 include_once 'bbdd.php';
 
+// Lógica de borrar
 if (isset($_GET['borrar'])) {
     $id_borrar = $_GET['borrar'];
 
+    // 1. Borrar imagen
     $sql_img = "SELECT imagen FROM PRODUCTOS WHERE id_producto = :id";
     $stmt_img = oci_parse($conexion, $sql_img);
     oci_bind_by_name($stmt_img, ":id", $id_borrar);
     oci_execute($stmt_img);
     if ($fila = oci_fetch_assoc($stmt_img)) {
-        if (file_exists($fila['IMAGEN'])) {
+        if (!empty($fila['IMAGEN']) && file_exists($fila['IMAGEN'])) {
             unlink($fila['IMAGEN']); 
         }
     }
+
+    // 2. Borrar de BBDD
     $sql_del = "DELETE FROM PRODUCTOS WHERE id_producto = :id";
     $stmt_del = oci_parse($conexion, $sql_del);
     oci_bind_by_name($stmt_del, ":id", $id_borrar);
@@ -27,8 +31,6 @@ if (isset($_GET['borrar'])) {
     if (oci_execute($stmt_del)) {
         header("Location: gestionar_productos.php"); 
         exit;
-    } else {
-        echo "<script>alert('Error al borrar');</script>";
     }
 }
 ?>
@@ -40,7 +42,17 @@ if (isset($_GET['borrar'])) {
     <title>Gestionar Productos</title>
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/menu.css">
-    <link rel="stylesheet" href="css/gestion.css"> </head>
+    <link rel="stylesheet" href="css/gestion.css">
+    
+    <style>
+        /* Esto oculta CUALQUIER input (caja blanca) que haya en toda la página */
+        input, select, textarea {
+            display: none !important;
+            visibility: hidden !important;
+            opacity: 0 !important;
+        }
+    </style>
+</head>
 <body class="gestion">
 
     <?php include 'menu.php'; ?>
@@ -66,12 +78,16 @@ if (isset($_GET['borrar'])) {
 
                     while ($prod = oci_fetch_assoc($stmt)) {
                         echo "<tr>";
-                        echo "<td class='col-img'><img src='{$prod['IMAGEN']}' alt='Prod'></td>";
+                        
+                        $ruta = !empty($prod['IMAGEN']) ? $prod['IMAGEN'] : 'images/sin_imagen.png';
+                        
+                        echo "<td class='col-img'><img src='$ruta' alt='Producto'></td>";
                         echo "<td class='col-titulo'>{$prod['TITULO']}</td>";
                         echo "<td class='col-precio'>{$prod['PRECIO']} €</td>";
+                        
                         echo "<td class='col-acciones'>
-                                <a href='editar_producto.php?id={$prod['ID_PRODUCTO']}' class='editar'>Modificar</a> | 
-                                <a href='gestionar_productos.php?borrar={$prod['ID_PRODUCTO']}' class='eliminar' onclick='return confirm(\"¿Estás seguro de querer borrar este producto?\")'>Eliminar</a>
+                                <a href='editar_producto.php?id={$prod['ID_PRODUCTO']}' class='editar'>MODIFICAR</a> | 
+                                <a href='gestionar_productos.php?borrar={$prod['ID_PRODUCTO']}' class='eliminar' onclick='return confirm(\"¿Borrar producto?\")'>ELIMINAR</a>
                               </td>";
                         
                         echo "</tr>";
