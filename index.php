@@ -1,5 +1,5 @@
 <?php
-    include_once 'bbdd.php'
+include_once 'bbdd.php'
 ?>
 
 <!DOCTYPE html>
@@ -74,35 +74,35 @@
             <h2>Productos de soporte</h2>
 
             <div class="cuadricula-productos">
-                <div class="tarjeta-producto">
+                <a href="tecnologias.php#portatil" class="tarjeta-producto">
                     <img src="images/foto4.png" alt="Portátil">
                     <h3>Portátil</h3>
-                </div>
+                </a>
 
-                <div class="tarjeta-producto">
+                <a href="tecnologias.php#consola" class="tarjeta-producto">
                     <img src="images/foto5.png" alt="Consola Portátil">
                     <h3>Consola</h3>
-                </div>
+                </a>
 
-                <div class="tarjeta-producto">
+                <a href="tecnologias.php#grafica" class="tarjeta-producto">
                     <img src="images/foto6.png" alt="Tarjeta Gráfica">
                     <h3>Tarjeta gráfica</h3>
-                </div>
+                </a>
 
-                <div class="tarjeta-producto">
+                <a href="tecnologias.php#placabase" class="tarjeta-producto">
                     <img src="images/foto7.png" alt="Placa Base">
                     <h3>Placa base</h3>
-                </div>
+                </a>
 
-                <div class="tarjeta-producto">
+                <a href="tecnologias.php#escritorio" class="tarjeta-producto">
                     <img src="images/foto2.png" alt="Escritorio">
                     <h3>Escritorio</h3>
-                </div>
+                </a>
 
-                <div class="tarjeta-producto">
+                <a href="tecnologias.php#monitor" class="tarjeta-producto">
                     <img src="images/foto9.png" alt="Monitor">
                     <h3>Monitor</h3>
-                </div>
+                </a>
             </div>
         </section>
     </section>
