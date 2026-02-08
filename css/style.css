@@ -75,9 +75,7 @@ body, html {
     background-size: 300% auto; /* Necesario para el movimiento */
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-    animation: movimientoColor 4s linear infinite;
-    filter: drop-shadow(0 0 2px rgba(0, 0, 0, 0.8)) 
-            drop-shadow(0 0 5px rgba(0, 0, 0, 0.5));
+    animation: movimientoColor 4s linear infinite; 
 }
 
 
@@ -194,7 +192,7 @@ footer a:hover {
 
 .pie-texto {
     font-size: 0.95rem;
-    color: #7b7b7b !important;
+    color: #555555 !important;
     text-transform: uppercase;
     letter-spacing: 1px;
 }

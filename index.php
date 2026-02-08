@@ -30,15 +30,14 @@ $conexion = oci_connect($user, $password, $bbdd, 'AL32UTF8');
 
         <section class="fondo">
             <video autoplay muted loop class="fondo-video">
-                <source src="videos/Fondo.mp4" type="video/mp4">
+                <source src="videos/fondo.mp4" type="video/mp4">
                 Tu navegador no soporta el video.
             </video>
             <div class="overlay"></div>
 
             <div class="titulo">
                 <h1 class="bienvenido">Bienvenido a SAYO</h1>
-                <p class="texto-animado">Soluciones a medida en hardware y componentes informáticos <br>
-                    certificados para potenciar tu productividad y eficiencia.</p>
+                <p class="texto-animado">Desarrollamos software y aplicaciones a medida para empresas y particulares.</p>
             </div>
         </section>
 
