@@ -26,10 +26,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if (move_uploaded_file($ruta_temporal, $carpeta_destino)) {
         
         $sql = "INSERT INTO PRODUCTOS (id_categoria, titulo, resumen, descripcion, precio, imagen) 
-                VALUES (:cat, :tit, :res, :descrip, :prec, :img)";
+                VALUES (:cat, :tit, :res, :descrip, :prec, :img) 
+                RETURNING id_producto INTO :id_nuevo";
         
         $stmt = oci_parse($conexion, $sql);
 
+    
         oci_bind_by_name($stmt, ":cat", $categoria);
         oci_bind_by_name($stmt, ":tit", $titulo);
         oci_bind_by_name($stmt, ":res", $resumen);
@@ -37,15 +39,40 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         oci_bind_by_name($stmt, ":prec", $precio);
         oci_bind_by_name($stmt, ":img", $carpeta_destino);
 
+      
+        $id_nuevo_producto = 0;
+        oci_bind_by_name($stmt, ":id_nuevo", $id_nuevo_producto, -1, OCI_B_INT);
+
         if (oci_execute($stmt)) {
-            $mensaje = "¡Producto añadido correctamente!";
+            
+            if (!empty($_FILES['galeria']['name'][0])) {
+                $total_fotos = count($_FILES['galeria']['name']);
+                
+                for ($i = 0; $i < $total_fotos; $i++) {
+                    $nom_gal = $_FILES['galeria']['name'][$i];
+                    $tmp_gal = $_FILES['galeria']['tmp_name'][$i];
+                    
+                    if ($nom_gal) {
+                        $dest_gal = "images/" . basename($nom_gal);
+                        move_uploaded_file($tmp_gal, $dest_gal);
+
+                        $sql_gal = "INSERT INTO IMAGENES_GALERIA (id_producto, imagen) VALUES (:id_prod, :img_path)";
+                        $stmt_gal = oci_parse($conexion, $sql_gal);
+                        oci_bind_by_name($stmt_gal, ":id_prod", $id_nuevo_producto);
+                        oci_bind_by_name($stmt_gal, ":img_path", $dest_gal);
+                        oci_execute($stmt_gal);
+                    }
+                }
+            }
+
+            $mensaje = "Producto y galería añadidos";
         } else {
             $e = oci_error($stmt);
             $error = "Error al guardar en BD: " . $e['message'];
         }
         
     } else {
-        $error = "Error al subir la imagen. Verifica permisos de la carpeta 'images'.";
+        $error = "Error al subir la imagen.";
     }
 }
 ?>
@@ -57,7 +84,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <title>Añadir Producto</title>
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/menu.css">
-    <link rel="stylesheet" href="css/formulario.css"> </head>
+    <link rel="stylesheet" href="css/formulario.css">
+</head>
 <body class="añadir">
 
     <?php include 'menu.php'; ?>
@@ -97,8 +125,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             </div>
 
             <div class="relleno">
-                <label>Imagen Principal:</label>
+                <label>Imagen Principal (Portada):</label>
                 <input type="file" name="imagen" accept="image/*" required>
+            </div>
+
+            <div class="seccion-galeria">
+                <label style="color: #00e5ff; font-weight:bold; margin-bottom:10px; display:block;">Galería de Imágenes Adicionales:</label>
+                <input type="file" name="galeria[]" multiple accept="image/*" style="width: 100%;">
             </div>
 
             <div class="relleno-texto">
@@ -119,3 +152,4 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 </body>
 </html>
+
