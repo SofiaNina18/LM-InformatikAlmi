@@ -38,13 +38,29 @@
     font-family: 'Segoe UI', sans-serif;
     font-size: 0.95rem;
     font-weight: 500;
-    transition: color 0.3s;
-    padding: 5px 10px;
+    transition: all 0.3s;
+    padding: 8px 15px;
     white-space: nowrap;
+    border-radius: 5px;
+}
+
+.activar-menu {
+    color: #00e5ff !important;
 }
 
 .contenido .lista li a:hover {
     color: #00e5ff;
+}
+
+
+.contenido .lista li a.boton {
+    background-color: #5544ff; 
+    color: #ffffff !important;
+}
+
+.contenido .lista li a.boton:hover {
+    background-color: #6655ff;
+    transform: translateY(-2px);
 }
 
 .lista-abajo {
@@ -73,11 +89,11 @@
     display: block;
     text-align: left;
     border-bottom: 1px solid #222;
-    font-size: 0.95rem !important;
+    background: none !important; 
 }
 
 .menu-tecnologia a:hover {
-    background-color: #1a1a1a;
+    background-color: #1a1a1a !important;
     color: #00e5ff !important;
     padding-left: 20px !important;
 }
@@ -86,19 +102,8 @@
     display: block;
 }
 
-.lista-abajo:hover .boton {
-    color: #00e5ff;
-}
-
-.contenido .lista li a.boton-sesion {
-    border: 1px solid transparent;
-    padding: 8px 15px;
-    border-radius: 5px;
-    transition: all 0.3s;
-}
-
 .contenido .lista li a.iniciar {
-    border-color: #00e5ff;
+    border: 1px solid #00e5ff;
     color: #00e5ff;
 }
 
@@ -109,7 +114,7 @@
 }
 
 .contenido .lista li a.cerrar {
-    border-color: #ff3333;
+    border: 1px solid #ff3333;
     color: #ff3333;
 }
 
