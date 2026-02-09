@@ -134,3 +134,14 @@ textarea {
     border-radius: 5px;
     margin-top: 10px;
 }
+
+.seccion-galeria label {
+    color: #00e5ff;
+    font-weight: bold;
+    margin-bottom: 10px;
+    display: block;
+}
+
+.seccion-galeria input[type="file"] {
+    width: 100%;
+}
