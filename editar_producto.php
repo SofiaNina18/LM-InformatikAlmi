@@ -1,7 +1,6 @@
 <?php
 session_start();
 
-// 1. SEGURIDAD
 if (!isset($_SESSION['usuario'])) {
     header("Location: iniciar-usuario.php");
     exit;
@@ -12,24 +11,32 @@ include_once 'bbdd.php';
 $mensaje = "";
 $error = "";
 $producto = null;
+$galeria = [];
 
-// 2. RECUPERAR DATOS DEL PRODUCTO
+
 if (isset($_GET['id'])) {
     $id_producto = $_GET['id'];
     
+   
     $sql = "SELECT * FROM PRODUCTOS WHERE id_producto = :id";
     $stmt = oci_parse($conexion, $sql);
     oci_bind_by_name($stmt, ":id", $id_producto);
     oci_execute($stmt);
-    
     $producto = oci_fetch_assoc($stmt);
 
     if (!$producto) {
         die("<h2 style='color:white;text-align:center;padding-top:100px;'>Error: Producto no encontrado.</h2>");
     }
+
+    $sql_gal = "SELECT * FROM IMAGENES_GALERIA WHERE id_producto = :id";
+    $stmt_gal = oci_parse($conexion, $sql_gal);
+    oci_bind_by_name($stmt_gal, ":id", $id_producto);
+    oci_execute($stmt_gal);
+    while ($fila = oci_fetch_assoc($stmt_gal)) {
+        $galeria[] = $fila;
+    }
 }
 
-// 3. GUARDAR CAMBIOS (UPDATE)
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     
     $id_producto = $_POST['id_producto'];
@@ -38,8 +45,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $descripcion = $_POST['descripcion'];
     $precio = $_POST['precio'];
     $categoria = $_POST['categoria'];
-    
-    // Si suben imagen nueva
+
     if (!empty($_FILES['imagen']['name'])) {
         $nombre_imagen = $_FILES['imagen']['name'];
         $ruta_temporal = $_FILES['imagen']['tmp_name'];
@@ -50,7 +56,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $stmt = oci_parse($conexion, $sql);
         oci_bind_by_name($stmt, ":img", $carpeta_destino);
     } else {
-        // Si NO suben imagen (Mantenemos la vieja)
         $sql = "UPDATE PRODUCTOS SET id_categoria=:cat, titulo=:tit, resumen=:res, descripcion=:descrip, precio=:prec WHERE id_producto=:id";
         $stmt = oci_parse($conexion, $sql);
     }
@@ -61,13 +66,45 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     oci_bind_by_name($stmt, ":descrip", $descripcion);
     oci_bind_by_name($stmt, ":prec", $precio);
     oci_bind_by_name($stmt, ":id", $id_producto);
-
-    if (oci_execute($stmt)) {
-        header("Location: gestionar_productos.php"); 
-        exit;
-    } else {
+    
+    if (!oci_execute($stmt)) {
         $e = oci_error($stmt);
-        $error = "Error al actualizar: " . $e['message'];
+        $error = "Error: " . $e['message'];
+    }
+
+
+    if (isset($_POST['borrar_galeria'])) {
+        foreach ($_POST['borrar_galeria'] as $ruta_a_borrar) {
+            if (file_exists($ruta_a_borrar)) { unlink($ruta_a_borrar); }
+            $sql_del = "DELETE FROM IMAGENES_GALERIA WHERE imagen = :img AND id_producto = :id_prod";
+            $stmt_del = oci_parse($conexion, $sql_del);
+            oci_bind_by_name($stmt_del, ":img", $ruta_a_borrar);
+            oci_bind_by_name($stmt_del, ":id_prod", $id_producto);
+            oci_execute($stmt_del);
+        }
+    }
+
+
+    if (!empty($_FILES['nuevas_fotos']['name'][0])) {
+        $total = count($_FILES['nuevas_fotos']['name']);
+        for ($i = 0; $i < $total; $i++) {
+            $nom = $_FILES['nuevas_fotos']['name'][$i];
+            $tmp = $_FILES['nuevas_fotos']['tmp_name'][$i];
+            if ($nom) {
+                $dest = "images/" . basename($nom);
+                move_uploaded_file($tmp, $dest);
+                $sql_ins = "INSERT INTO IMAGENES_GALERIA (id_producto, imagen) VALUES (:id_prod, :img_path)";
+                $stmt_ins = oci_parse($conexion, $sql_ins);
+                oci_bind_by_name($stmt_ins, ":id_prod", $id_producto);
+                oci_bind_by_name($stmt_ins, ":img_path", $dest);
+                oci_execute($stmt_ins);
+            }
+        }
+    }
+
+    if (!$error) {
+        header("Location: gestionar_productos.php");
+        exit;
     }
 }
 ?>
@@ -80,24 +117,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/menu.css">
     <link rel="stylesheet" href="css/editar.css">
-    
-    <style>
-        /* Aseguramos que se vea todo */
-        .formulario-editar input, 
-        .formulario-editar select, 
-        .formulario-editar textarea,
-        .formulario-editar button {
-            display: block !important;
-            visibility: visible !important;
-            opacity: 1 !important;
-            width: 100%;
-        }
-        .vista-previa img {
-            display: inline-block !important;
-            width: auto !important;
-        }
-        header input, .menu input { display: none !important; }
-    </style>
 </head>
 <body class="editar">
 
@@ -111,7 +130,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <?php endif; ?>
 
         <?php if ($producto): ?>
-        <form action="editar_producto.php" method="POST" enctype="multipart/form-data" class="formulario-editar">
+        <form action="editar_producto.php?id=<?php echo $producto['ID_PRODUCTO']; ?>" method="POST" enctype="multipart/form-data" class="formulario-editar">
             
             <input type="hidden" name="id_producto" value="<?php echo $producto['ID_PRODUCTO']; ?>">
 
@@ -120,7 +139,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     <label>Título:</label>
                     <input type="text" name="titulo" value="<?php echo $producto['TITULO']; ?>" required>
                 </div>
-
                 <div class="campo">
                     <label>Categoría:</label>
                     <select name="categoria" required>
@@ -139,20 +157,42 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     <label>Precio (€):</label>
                     <input type="number" name="precio" step="0.01" value="<?php echo $producto['PRECIO']; ?>" required>
                 </div>
-
                 <div class="campo">
-                    <label>Imagen Actual:</label>
+                    <label>Imagen Principal:</label>
                     <div class="vista-previa">
                         <?php 
-                            // Corrección para leer la imagen si es CLOB (raro pero posible)
                             $img = $producto['IMAGEN'];
                             if (is_object($img)) { $img = $img->load(); }
-                            $ruta_img = !empty($img) ? $img : 'images/sin_imagen.png';
+                            $ruta = !empty($img) ? $img : 'images/sin_imagen.png';
                         ?>
-                        <img src="<?php echo $ruta_img; ?>" height="60">
-                        <span>(Sube otra para cambiarla)</span>
+                        <img src="<?php echo $ruta; ?>" height="60">
                     </div>
                     <input type="file" name="imagen" accept="image/*">
+                </div>
+            </div>
+
+            <div class="contenedor-galeria">
+                <label class="titulo-galeria">Galería de Imágenes Extra</label>
+                
+                <div class="fotos-existentes">
+                    <?php if (count($galeria) > 0): ?>
+                        <?php foreach($galeria as $foto): ?>
+                            <div class="item-galeria">
+                                <img src="<?php echo $foto['IMAGEN']; ?>" alt="Extra">
+                                <label class="check-borrar">
+                                    <input type="checkbox" name="borrar_galeria[]" value="<?php echo $foto['IMAGEN']; ?>">
+                                    Borrar
+                                </label>
+                            </div>
+                        <?php endforeach; ?>
+                    <?php else: ?>
+                        <p class="sin-fotos">No hay imágenes extra.</p>
+                    <?php endif; ?>
+                </div>
+
+                <div class="campo">
+                    <label>Añadir nuevas fotos (Selección múltiple):</label>
+                    <input type="file" name="nuevas_fotos[]" multiple accept="image/*">
                 </div>
             </div>
 
@@ -165,11 +205,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 <label>Descripción:</label>
                 <textarea name="descripcion" rows="8" required><?php 
                     $desc = $producto['DESCRIPCION'];
-                    if (is_object($desc)) { // Si es un objeto de Oracle (CLOB)
-                        echo $desc->load(); // Lo leemos
-                    } else {
-                        echo $desc; // Si es texto normal, lo imprimimos
-                    }
+                    if (is_object($desc)) { echo $desc->load(); } else { echo $desc; }
                 ?></textarea>
             </div>
 
@@ -178,6 +214,5 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         </form>
         <?php endif; ?>
     </div>
-
 </body>
 </html>

@@ -65,6 +65,9 @@ body.editar {
     font-size: 1rem;
     outline: none;
     transition: 0.3s;
+    width: 100%;
+    box-sizing: border-box;
+    display: block; 
 }
 
 .campo input:focus, 
@@ -92,21 +95,91 @@ body.editar {
     object-fit: contain;
 }
 
-.vista-previa span {
-    font-size: 0.8rem;
-    color: #888;
-}
-
 textarea {
     resize: vertical;
     line-height: 1.5;
 }
 
-/* ESTILO DEL BOTÓN DE GUARDAR */
+/* --- ESTILOS GALERÍA --- */
+.contenedor-galeria {
+    grid-column: 1 / -1;
+    background-color: #0f0f0f;
+    padding: 20px;
+    border-radius: 10px;
+    border: 1px solid #333;
+    margin-top: 10px;
+}
+
+.titulo-galeria {
+    color: #00e5ff !important;
+    font-size: 1.1rem;
+    margin-bottom: 20px;
+    display: block;
+    text-transform: uppercase;
+    border-bottom: 1px solid #333;
+    padding-bottom: 10px;
+}
+
+.fotos-existentes {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    margin-bottom: 20px;
+}
+
+.item-galeria {
+    background: #000;
+    padding: 10px;
+    border: 1px solid #444;
+    border-radius: 8px;
+    text-align: center;
+    transition: 0.3s;
+}
+
+.item-galeria:hover {
+    border-color: #00e5ff;
+    box-shadow: 0 0 10px rgba(0, 229, 255, 0.2);
+}
+
+.item-galeria img {
+    height: 100px;
+    width: auto;
+    object-fit: contain;
+    display: block;
+    margin-bottom: 10px;
+    background-color: #fff;
+    border-radius: 4px;
+}
+
+.check-borrar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    color: #ff3333;
+    font-weight: bold;
+    font-size: 0.9rem;
+    cursor: pointer;
+}
+
+.check-borrar input {
+    width: 16px !important;
+    height: 16px !important;
+    margin: 0;
+    cursor: pointer;
+    accent-color: #ff3333;
+}
+
+.sin-fotos {
+    color: #666;
+    font-style: italic;
+}
+
+/* --- BOTÓN GUARDAR --- */
 .boton-actualizar {
-    background-color: #00e5ff !important; /* Relleno azul */
+    background-color: #00e5ff;
     border: none;
-    color: #000000 !important; /* Texto negro */
+    color: #000000;
     font-weight: bold;
     font-size: 1.2rem;
     padding: 15px;
@@ -116,29 +189,23 @@ textarea {
     transition: 0.3s;
     margin-top: 20px;
     width: 100%;
-    text-align: center;
-    box-shadow: 0 0 15px rgba(0, 229, 255, 0.4);
 }
 
 .boton-actualizar:hover {
-    background-color: #ffffff !important; /* Blanco al pasar ratón */
-    box-shadow: 0 0 25px rgba(0, 229, 255, 0.8);
-    transform: scale(1.02);
+    background-color: #fff;
+    box-shadow: 0 0 20px rgba(0, 229, 255, 0.6);
 }
 
-.alerta.error {
-    background-color: rgba(255, 51, 51, 0.15);
-    border: 1px solid #ff3333;
-    color: #ff3333;
+.alerta {
     padding: 15px;
     border-radius: 5px;
     text-align: center;
     margin-bottom: 20px;
+    font-weight: bold;
+}
+.alerta.error {
+    background-color: rgba(255, 51, 51, 0.2);
+    border: 1px solid #ff3333;
+    color: #ff3333;
 }
 
-@media (max-width: 768px) {
-    .fila {
-        grid-template-columns: 1fr;
-        gap: 20px;
-    }
-}
