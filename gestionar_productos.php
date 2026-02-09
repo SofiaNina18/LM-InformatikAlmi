@@ -8,11 +8,9 @@ if (!isset($_SESSION['usuario'])) {
 
 include_once 'bbdd.php';
 
-// Lógica de borrar
 if (isset($_GET['borrar'])) {
     $id_borrar = $_GET['borrar'];
 
-    // 1. Borrar imagen
     $sql_img = "SELECT imagen FROM PRODUCTOS WHERE id_producto = :id";
     $stmt_img = oci_parse($conexion, $sql_img);
     oci_bind_by_name($stmt_img, ":id", $id_borrar);
@@ -23,7 +21,6 @@ if (isset($_GET['borrar'])) {
         }
     }
 
-    // 2. Borrar de BBDD
     $sql_del = "DELETE FROM PRODUCTOS WHERE id_producto = :id";
     $stmt_del = oci_parse($conexion, $sql_del);
     oci_bind_by_name($stmt_del, ":id", $id_borrar);
@@ -43,15 +40,7 @@ if (isset($_GET['borrar'])) {
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/menu.css">
     <link rel="stylesheet" href="css/gestion.css">
-    
-    <style>
-        /* Esto oculta CUALQUIER input (caja blanca) que haya en toda la página */
-        input, select, textarea {
-            display: none !important;
-            visibility: hidden !important;
-            opacity: 0 !important;
-        }
-    </style>
+    <link rel="shortcut icon" href="images/logSayo.ico" type="image/x-icon">
 </head>
 <body class="gestion">
 
@@ -86,8 +75,8 @@ if (isset($_GET['borrar'])) {
                         echo "<td class='col-precio'>{$prod['PRECIO']} €</td>";
                         
                         echo "<td class='col-acciones'>
-                                <a href='editar_producto.php?id={$prod['ID_PRODUCTO']}' class='editar'>MODIFICAR</a> | 
-                                <a href='gestionar_productos.php?borrar={$prod['ID_PRODUCTO']}' class='eliminar' onclick='return confirm(\"¿Borrar producto?\")'>ELIMINAR</a>
+                                <a href='editar_producto.php?id={$prod['ID_PRODUCTO']}' class='editar-producto'>MODIFICAR</a> | 
+                                <a href='gestionar_productos.php?borrar={$prod['ID_PRODUCTO']}' class='eliminar-producto' onclick='return confirm(\"¿Borrar producto?\")'>ELIMINAR</a>
                               </td>";
                         
                         echo "</tr>";

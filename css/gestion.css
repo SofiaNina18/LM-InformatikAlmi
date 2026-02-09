@@ -87,7 +87,7 @@ tr:last-child td {
     white-space: nowrap;
 }
 
-.editar {
+.editar-producto {
     color: #00e5ff;
     text-decoration: none;
     font-weight: bold;
@@ -97,12 +97,12 @@ tr:last-child td {
     font-size: 0.9rem;
 }
 
-.editar:hover {
+.editar-producto:hover {
     color: #fff;
     text-shadow: 0 0 10px #00e5ff;
 }
 
-.eliminar {
+.eliminar-producto {
     color: #ff3333;
     text-decoration: none;
     font-weight: bold;
@@ -111,24 +111,13 @@ tr:last-child td {
     font-size: 0.9rem;
 }
 
-.eliminar:hover {
+.eliminar-producto:hover {
     color: #fff;
     text-shadow: 0 0 10px #ff3333;
 }
 
-@media (max-width: 768px) {
-    th, td {
-        padding: 10px;
-        font-size: 0.85rem;
-    }
-    
-    .col-img img {
-        width: 40px;
-        height: 40px;
-    }
-
-    .editar, .eliminar {
-        display: block;
-        margin: 5px 0;
-    }
+input, select, textarea {
+    display: none !important;
+    visibility: hidden !important;
+    opacity: 0 !important;
 }
