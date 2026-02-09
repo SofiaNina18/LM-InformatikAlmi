@@ -22,9 +22,6 @@ body.gestion {
     text-underline-offset: 10px;
 }
 
-.contenido {
-    overflow-x: auto;
-}
 
 table {
     width: 100%;
