@@ -1,34 +1,38 @@
-body.pag-tecnologia {
+body.tecnologia {
     background-color: #000000 !important;
     color: #ffffff !important;
     font-family: sans-serif;
     margin: 0;
     padding-top: 100px;
-    
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    box-sizing: border-box;
 }
 
-.cabecera-tech {
+.titulo-tecnologia {
     text-align: center;
     padding: 40px 20px;
     border-bottom: 2px solid #333;
 }
 
-.cabecera-tech h1 {
+.titulo-tecnologia h1 {
     color: #00e5ff;
     text-transform: uppercase;
     font-size: 3rem;
     margin: 0;
 }
 
-.contenedor-principal {
+.categorias-productos {
     max-width: 1400px;
     margin: 0 auto;
     padding: 40px 20px;
+    flex: 1; 
+    width: 100%;
 }
 
 .titulo-seccion {
     color: #ffffff !important;
-    /* BLANCO OBLIGADO */
     font-size: 2.2rem;
     text-transform: uppercase;
     border-left: 5px solid #00e5ff;
@@ -38,7 +42,7 @@ body.pag-tecnologia {
     font-weight: bold;
 }
 
-.grid-3-columnas {
+.\33-columnas {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 40px;
@@ -60,7 +64,7 @@ body.pag-tecnologia {
     border-color: #00e5ff;
 }
 
-.img-wrap {
+.img-contenido {
     height: 250px;
     background-color: #ffffff;
     display: flex;
@@ -69,13 +73,13 @@ body.pag-tecnologia {
     padding: 15px;
 }
 
-.img-wrap img {
+.img-contenido img {
     max-width: 95%;
     max-height: 95%;
     object-fit: contain;
 }
 
-.contenido-tarjeta {
+.contenido-tecnologia {
     padding: 20px;
     text-align: center;
     flex-grow: 1;
@@ -83,20 +87,20 @@ body.pag-tecnologia {
     flex-direction: column;
 }
 
-.contenido-tarjeta h3 {
+.contenido-tecnologia h3 {
     color: #ffffff !important;
     font-size: 1.4rem;
     margin-bottom: 10px;
 }
 
-.contenido-tarjeta .resumen {
+.contenido-tecnologia .resumen {
     color: #cccccc !important;
     font-size: 0.95rem;
     margin-bottom: 20px;
     flex-grow: 1;
 }
 
-.btn-ver-mas {
+.ver-mas {
     display: inline-block;
     padding: 10px 25px;
     border: 1px solid #00e5ff;
@@ -108,13 +112,12 @@ body.pag-tecnologia {
     margin-top: auto;
 }
 
-.btn-ver-mas:hover {
+.ver-mas:hover {
     background-color: #00e5ff;
     color: #000000 !important;
 }
 
-
-.subtitulo-tech {
+.texto-abajo {
     color: #aaaaaa;
     text-align: center;
 }
