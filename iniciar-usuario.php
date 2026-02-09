@@ -6,19 +6,17 @@ if (isset($_SESSION['usuario'])) {
     exit;
 }
 
-
 include_once 'bbdd.php';
 
 $error = "";
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     
-   
     $usuario_form = $_POST['usuario'];
     $password_form = $_POST['password'];
-
-   
-    $sql = "SELECT * FROM USUARIOS WHERE nombre_usuario = :u AND password = :p";
+    
+    $sql = "SELECT * FROM PROVEEDORES WHERE USUARIO = :u AND CONTRASEÑA = :p";
+    
     $stmt = oci_parse($conexion, $sql);
 
     oci_bind_by_name($stmt, ":u", $usuario_form);
@@ -26,8 +24,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     
     oci_execute($stmt);
 
+ 
     if ($fila = oci_fetch_assoc($stmt)) {
-        $_SESSION['usuario'] = $fila['NOMBRE_USUARIO']; 
+       
+        $_SESSION['usuario'] = $fila['USUARIO']; 
+        
         header("Location: index.php"); 
         exit;
     } else {
@@ -43,7 +44,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <title>Iniciar Sesión</title>
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/menu.css">
-    <link rel="stylesheet" href="css/iniciar-usuario.css"> </head>
+    <link rel="stylesheet" href="css/iniciar-usuario.css"> 
+</head>
 <body class="iniciar-sesion">
 
     <?php include 'menu.php'; ?>
@@ -56,8 +58,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
             <form action="iniciar-usuario.php" method="POST">
                 <div class="rellenar">
-                    <label for="usuario">Usuario</label>
-                    <input type="text" name="usuario" id="usuario" required placeholder="">
+                    <label for="usuario">Usuario Proveedor</label>
+                    <input type="text" name="usuario" id="usuario" required placeholder="Ej: techsupply">
                 </div>
 
                 <div class="rellenar">
@@ -65,7 +67,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     <input type="password" name="password" id="password" required placeholder="">
                 </div>
 
-                <button type="submit" class="entrar">ENTRAR</button>
+                <button type="submit" class="entrar">ENTRAR PROVEEDOR</button>
             </form>
         </div>
 
