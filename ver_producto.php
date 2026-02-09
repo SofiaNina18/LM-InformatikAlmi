@@ -37,47 +37,48 @@ $desc_html = nl2br($desc_texto);
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <title><?php echo $producto['TITULO']; ?> - SAYO</title>
+    <title><?php echo $producto['TITULO']; ?></title>
     
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/menu.css">
     <link rel="stylesheet" href="css/detalle.css">
+    <link rel="shortcut icon" href="images/logSayo.ico" type="image/x-icon">
 </head>
 
-<body class="pag-detalle">
+<body class="ver-producto">
 
     <?php include 'menu.php'; ?>
 
-    <div class="contenedor-producto">
+    <div class="producto">
         
         <div class="columna-fotos">
-            <div class="marco-grande">
+            <div class="imagen-principal">
                 <img id="imgGrande" src="<?php echo $producto['IMAGEN']; ?>" alt="Producto">
             </div>
             
-            <div class="tira-miniaturas">
-                <img src="<?php echo $producto['IMAGEN']; ?>" onclick="cambiarFoto(this)" class="thumb activo">
+            <div class="imagenes-pequenas">
+                <img src="<?php echo $producto['IMAGEN']; ?>" onclick="cambiarFoto(this)" class="carrusel activo">
                 <?php
                 while ($foto = oci_fetch_assoc($stmt_gal)) {
                     $ruta = $foto['IMAGEN'];
-                    echo "<img src='$ruta' onclick='cambiarFoto(this)' class='thumb'>";
+                    echo "<img src='$ruta' onclick='cambiarFoto(this)' class='carrusel'>";
                 }
                 ?>
             </div>
         </div>
 
-        <div class="columna-info">
-            <h1 class="titulo-prod"><?php echo $producto['TITULO']; ?></h1>
+        <div class="informacion-producto">
+            <h1 class="titulo-producto"><?php echo $producto['TITULO']; ?></h1>
             
-            <div class="descripcion-bloque">
+            <div class="descripcion-producto">
                 <?php echo $desc_html; ?>
             </div>
 
-            <div class="precio-final">
+            <div class="precio-producto">
                 <?php echo number_format($producto['PRECIO'], 2, ',', '.'); ?> €
             </div>
 
-            <a href="tecnologias.php" class="btn-volver">← Volver al Catálogo</a>
+            <a href="tecnologias.php" class="volver">← Volver al Catálogo</a>
         </div>
 
     </div>
@@ -90,7 +91,7 @@ $desc_html = nl2br($desc_texto);
                 grande.src = peque.src;
                 grande.style.opacity = 1;
             }, 200);
-            document.querySelectorAll('.thumb').forEach(t => t.classList.remove('activo'));
+            document.querySelectorAll('.carrusel').forEach(t => t.classList.remove('activo'));
             peque.classList.add('activo');
         }
     </script>

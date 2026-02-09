@@ -1,5 +1,5 @@
 
-body.pag-detalle {
+body.ver-producto {
     background-color: #000000 !important; 
     color: #ffffff !important;            
     font-family: 'Segoe UI', sans-serif;
@@ -10,7 +10,7 @@ body.pag-detalle {
     flex-direction: column;
 }
 
-.contenedor-producto {
+.producto {
     flex-grow: 1;
     width: 90%;
     max-width: 1400px;
@@ -36,18 +36,17 @@ body.pag-detalle {
     align-items: center;
 }
 
-.marco-grande {
+.imagen-principal {
     width: 100%;
     height: 450px;
     display: flex;
     align-items: center;
     justify-content: center;
     margin-bottom: 20px;
-    /* Brillo sutil detrás del producto */
     background: radial-gradient(circle, rgba(255,255,255,0.05) 0%, rgba(0,0,0,0) 70%);
 }
 
-.marco-grande img {
+.imagen-principal img {
     max-width: 100%;
     max-height: 100%;
     object-fit: contain;
@@ -56,14 +55,14 @@ body.pag-detalle {
 }
 
 /* Tira de miniaturas */
-.tira-miniaturas {
+.imagenes-pequenas {
     display: flex;
     gap: 15px;
     flex-wrap: wrap;
     justify-content: center;
 }
 
-.thumb {
+.carrusel {
     width: 80px;
     height: 60px;
     background-color: #1a1a1a;
@@ -75,10 +74,10 @@ body.pag-detalle {
     transition: 0.2s;
 }
 
-.thumb:hover { border-color: #00e5ff; }
-.thumb.activo { border-color: #00e5ff; box-shadow: 0 0 10px rgba(0,229,255,0.3); }
+.carrusel:hover { border-color: #00e5ff; }
+.carrusel.activo { border-color: #00e5ff; box-shadow: 0 0 10px rgba(0,229,255,0.3); }
 
-.columna-info {
+.informacion-producto {
     width: 50%;
     padding: 50px;
     display: flex;
@@ -86,7 +85,7 @@ body.pag-detalle {
     background: linear-gradient(135deg, #0a0a0a 0%, #000 100%);
 }
 
-.titulo-prod {
+.titulo-producto {
     font-size: 2.5rem;
     color: #ffffff;
     margin-top: 0;
@@ -96,7 +95,7 @@ body.pag-detalle {
 }
 
 
-.descripcion-bloque {
+.descripcion-producto {
     font-size: 1rem;
     line-height: 1.8;
     color: #cccccc; 
@@ -110,12 +109,12 @@ body.pag-detalle {
 }
 
 
-.descripcion-bloque::-webkit-scrollbar { width: 8px; }
-.descripcion-bloque::-webkit-scrollbar-track { background: #111; }
-.descripcion-bloque::-webkit-scrollbar-thumb { background: #444; border-radius: 4px; }
+.descripcion-producto::-webkit-scrollbar { width: 8px; }
+.descripcion-producto::-webkit-scrollbar-track { background: #111; }
+.descripcion-producto::-webkit-scrollbar-carrusel { background: #444; border-radius: 4px; }
 
 
-.precio-final {
+.precio-producto {
     font-size: 3.5rem;
     color: #00e5ff; 
     font-weight: bold;
@@ -124,7 +123,7 @@ body.pag-detalle {
 }
 
 
-.btn-volver {
+.volver {
     padding: 12px 30px;
     background: transparent;
     border: 1px solid white;
@@ -136,7 +135,7 @@ body.pag-detalle {
     width: fit-content;
 }
 
-.btn-volver:hover {
+.volver:hover {
     background: #fff;
     color: #000;
 }
