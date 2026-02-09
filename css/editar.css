@@ -100,7 +100,6 @@ textarea {
     line-height: 1.5;
 }
 
-/* --- ESTILOS GALERÍA --- */
 .contenedor-galeria {
     grid-column: 1 / -1;
     background-color: #0f0f0f;
@@ -175,7 +174,6 @@ textarea {
     font-style: italic;
 }
 
-/* --- BOTÓN GUARDAR --- */
 .boton-actualizar {
     background-color: #00e5ff;
     border: none;
@@ -208,4 +206,3 @@ textarea {
     border: 1px solid #ff3333;
     color: #ff3333;
 }
-
