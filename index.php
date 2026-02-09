@@ -1,13 +1,5 @@
 <?php
-
-$user = "InformatikAlmi";
-$password = "Almi12345";
-//$bbdd = "192.168.0.152/ORCLCDB"; //Conexión a BBDD Sofia
-//$bbdd = "192.168.0.136/ORCLCDB"; //Conexión a BBDD Oier
-$bbdd = "10.94.20.122/ORCLCDB"; //Conexión Sofia
-
-
-$conexion = oci_connect($user, $password, $bbdd, 'AL32UTF8');
+include_once 'bbdd.php'
 ?>
 
 <!DOCTYPE html>
@@ -21,6 +13,7 @@ $conexion = oci_connect($user, $password, $bbdd, 'AL32UTF8');
     <meta name="keywords" content="informatica, sostenibilidad" />
     <link rel="stylesheet" href="css/style.css" />
     <link rel="stylesheet" href="css/menu.css" />
+    <link rel="shortcut icon" href="images/logSayo.ico" type="image/x-icon">
 </head>
 
 <body class="indice">
@@ -81,35 +74,36 @@ $conexion = oci_connect($user, $password, $bbdd, 'AL32UTF8');
             <h2>Productos de soporte</h2>
 
             <div class="cuadricula-productos">
-                <div class="tarjeta-producto">
+                
+                <a href="tecnologias.php?nombre=Port" class="tarjeta-producto">
                     <img src="images/foto4.png" alt="Portátil">
                     <h3>Portátil</h3>
-                </div>
+                </a>
 
-                <div class="tarjeta-producto">
+                <a href="tecnologias.php?nombre=Consola" class="tarjeta-producto">
                     <img src="images/foto5.png" alt="Consola Portátil">
                     <h3>Consola</h3>
-                </div>
+                </a>
 
-                <div class="tarjeta-producto">
+                <a href="tecnologias.php?nombre=Tarjeta" class="tarjeta-producto">
                     <img src="images/foto6.png" alt="Tarjeta Gráfica">
                     <h3>Tarjeta gráfica</h3>
-                </div>
+                </a>
 
-                <div class="tarjeta-producto">
+                <a href="tecnologias.php?nombre=Placa" class="tarjeta-producto">
                     <img src="images/foto7.png" alt="Placa Base">
                     <h3>Placa base</h3>
-                </div>
+                </a>
 
-                <div class="tarjeta-producto">
+                <a href="tecnologias.php?nombre=Escritorio" class="tarjeta-producto">
                     <img src="images/foto2.png" alt="Escritorio">
                     <h3>Escritorio</h3>
-                </div>
+                </a>
 
-                <div class="tarjeta-producto">
+                <a href="tecnologias.php?nombre=Monitor" class="tarjeta-producto">
                     <img src="images/foto9.png" alt="Monitor">
                     <h3>Monitor</h3>
-                </div>
+                </a>
             </div>
         </section>
     </section>

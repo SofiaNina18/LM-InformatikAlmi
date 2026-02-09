@@ -1,0 +1,123 @@
+body.gestion {
+    background-color: #000000;
+    color: white;
+    font-family: 'Segoe UI', sans-serif;
+    padding-top: 100px;
+    min-height: 100vh;
+}
+
+.tabla-gestion {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.tabla-gestion h1 {
+    text-align: center;
+    color: #ffffff;
+    text-transform: uppercase;
+    margin-bottom: 40px;
+    text-decoration: underline;
+    text-decoration-color: #00e5ff;
+    text-underline-offset: 10px;
+}
+
+.contenido {
+    overflow-x: auto;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: #0a0a0a;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 0 20px rgba(0,0,0,0.5);
+}
+
+thead {
+    background-color: #1a1a1a;
+    border-bottom: 2px solid #333;
+}
+
+th {
+    padding: 20px;
+    text-align: left;
+    color: #00e5ff;
+    text-transform: uppercase;
+    font-size: 0.9rem;
+    letter-spacing: 1px;
+}
+
+td {
+    padding: 15px 20px;
+    border-bottom: 1px solid #222;
+    vertical-align: middle;
+}
+
+tr:hover {
+    background-color: #111;
+}
+
+tr:last-child td {
+    border-bottom: none;
+}
+
+.col-img img {
+    width: 60px;
+    height: 60px;
+    object-fit: contain;
+    background-color: #fff;
+    padding: 5px;
+    border-radius: 5px;
+}
+
+.col-titulo {
+    font-weight: bold;
+    font-size: 1.1rem;
+    color: #eee;
+}
+
+.col-precio {
+    color: #ccc;
+    font-weight: bold;
+}
+
+.col-acciones {
+    white-space: nowrap;
+}
+
+.editar-producto {
+    color: #00e5ff;
+    text-decoration: none;
+    font-weight: bold;
+    margin-right: 15px;
+    transition: 0.3s;
+    text-transform: uppercase;
+    font-size: 0.9rem;
+}
+
+.editar-producto:hover {
+    color: #fff;
+    text-shadow: 0 0 10px #00e5ff;
+}
+
+.eliminar-producto {
+    color: #ff3333;
+    text-decoration: none;
+    font-weight: bold;
+    transition: 0.3s;
+    text-transform: uppercase;
+    font-size: 0.9rem;
+}
+
+.eliminar-producto:hover {
+    color: #fff;
+    text-shadow: 0 0 10px #ff3333;
+}
+
+input, select, textarea {
+    display: none !important;
+    visibility: hidden !important;
+    opacity: 0 !important;
+}
