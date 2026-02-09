@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/menu.css">
     <link rel="stylesheet" href="css/servicios.css">
+    <link rel="shortcut icon" href="images/logSayo.ico" type="image/x-icon">
 </head>
 
 <body class="servicios">
