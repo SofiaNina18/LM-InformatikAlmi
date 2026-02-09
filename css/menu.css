@@ -52,16 +52,11 @@
     color: #00e5ff;
 }
 
-
 .contenido .lista li a.boton {
-    background-color: #5544ff; 
     color: #ffffff !important;
 }
 
-.contenido .lista li a.boton:hover {
-    background-color: #6655ff;
-    transform: translateY(-2px);
-}
+
 
 .lista-abajo {
     position: relative;

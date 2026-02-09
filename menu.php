@@ -4,7 +4,6 @@ if (session_status() === PHP_SESSION_NONE) {
 }
 
 include_once 'bbdd.php';
-
 $pagina_actual = basename($_SERVER['PHP_SELF']);
 
 $sql_menu = "SELECT * FROM CATEGORIAS ORDER BY ID_CATEGORIA ASC";
