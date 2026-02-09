@@ -13,6 +13,7 @@ include_once 'bbdd.php'
     <meta name="keywords" content="informatica, sostenibilidad" />
     <link rel="stylesheet" href="css/style.css" />
     <link rel="stylesheet" href="css/menu.css" />
+    <link rel="shortcut icon" href="images/logSayo.ico" type="image/x-icon">
 </head>
 
 <body class="indice">
@@ -74,32 +75,33 @@ include_once 'bbdd.php'
             <h2>Productos de soporte</h2>
 
             <div class="cuadricula-productos">
-                <a href="tecnologias.php#portatil" class="tarjeta-producto">
+                
+                <a href="tecnologias.php?nombre=Port" class="tarjeta-producto">
                     <img src="images/foto4.png" alt="Portátil">
                     <h3>Portátil</h3>
                 </a>
 
-                <a href="tecnologias.php#consola" class="tarjeta-producto">
+                <a href="tecnologias.php?nombre=Consola" class="tarjeta-producto">
                     <img src="images/foto5.png" alt="Consola Portátil">
                     <h3>Consola</h3>
                 </a>
 
-                <a href="tecnologias.php#grafica" class="tarjeta-producto">
+                <a href="tecnologias.php?nombre=Tarjeta" class="tarjeta-producto">
                     <img src="images/foto6.png" alt="Tarjeta Gráfica">
                     <h3>Tarjeta gráfica</h3>
                 </a>
 
-                <a href="tecnologias.php#placabase" class="tarjeta-producto">
+                <a href="tecnologias.php?nombre=Placa" class="tarjeta-producto">
                     <img src="images/foto7.png" alt="Placa Base">
                     <h3>Placa base</h3>
                 </a>
 
-                <a href="tecnologias.php#escritorio" class="tarjeta-producto">
+                <a href="tecnologias.php?nombre=Escritorio" class="tarjeta-producto">
                     <img src="images/foto2.png" alt="Escritorio">
                     <h3>Escritorio</h3>
                 </a>
 
-                <a href="tecnologias.php#monitor" class="tarjeta-producto">
+                <a href="tecnologias.php?nombre=Monitor" class="tarjeta-producto">
                     <img src="images/foto9.png" alt="Monitor">
                     <h3>Monitor</h3>
                 </a>

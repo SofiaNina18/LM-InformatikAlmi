@@ -2,7 +2,23 @@
 include_once 'bbdd.php'; 
 if (session_status() === PHP_SESSION_NONE) session_start();
 
-$filtro_categoria = isset($_GET['categoria']) ? $_GET['categoria'] : null;
+$filtro_id = null;
+
+if (isset($_GET['nombre'])) {
+    $nombre_buscado = $_GET['nombre'];
+    $sql_busca_id = "SELECT ID_CATEGORIA FROM CATEGORIAS WHERE UPPER(NOMBRE_CATEGORIA) LIKE '%' || UPPER(:nom) || '%'";
+    $stmt_busca = oci_parse($conexion, $sql_busca_id);
+    oci_bind_by_name($stmt_busca, ":nom", $nombre_buscado);
+    oci_execute($stmt_busca);
+    
+    if ($row = oci_fetch_assoc($stmt_busca)) {
+        $filtro_id = $row['ID_CATEGORIA'];
+    }
+} 
+elseif (isset($_GET['categoria'])) {
+    $filtro_id = $_GET['categoria'];
+}
+
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -27,10 +43,10 @@ $filtro_categoria = isset($_GET['categoria']) ? $_GET['categoria'] : null;
     <main class="categorias-productos">
         <?php
 
-        if ($filtro_categoria) {
+        if ($filtro_id) {
             $sql_cat = "SELECT * FROM CATEGORIAS WHERE ID_CATEGORIA = :id";
             $stmt_cat = oci_parse($conexion, $sql_cat);
-            oci_bind_by_name($stmt_cat, ":id", $filtro_categoria);
+            oci_bind_by_name($stmt_cat, ":id", $filtro_id);
         } else {
             $sql_cat = "SELECT * FROM CATEGORIAS ORDER BY ID_CATEGORIA ASC";
             $stmt_cat = oci_parse($conexion, $sql_cat);
