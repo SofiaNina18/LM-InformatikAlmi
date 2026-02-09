@@ -1,9 +1,9 @@
 <?php
 $user = "InformatikAlmi";
 $password = "Almi12345";
-// $bbdd = "192.168.0.152/ORCLCDB"; 
+$bbdd = "192.168.0.152/ORCLCDB"; 
 // $bbdd = "192.168.0.136/ORCLCDB"; 
-$bbdd = "192.168.1.131/ORCLCDB";
+//$bbdd = "192.168.1.131/ORCLCDB";
 
 $conexion = oci_connect($user, $password, $bbdd, 'AL32UTF8');
 
