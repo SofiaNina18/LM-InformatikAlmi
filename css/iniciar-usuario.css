@@ -1,48 +1,36 @@
-/* =========================================
-   ESTILO GENERAL DE LA PÁGINA
-   ========================================= */
 body.iniciar-sesion {
-    background-color: #000000; /* Fondo negro */
+    background-color: #000000;
     font-family: 'Segoe UI', sans-serif;
     color: white;
     margin: 0;
-    
-    /* Centrar todo el contenido vertical y horizontalmente */
     display: flex;
     justify-content: center;
     align-items: center;
-    min-height: 100vh; /* Ocupa toda la altura de la pantalla */
-    padding-top: 80px; /* Hueco para que el menú fijo no tape el formulario */
+    min-height: 100vh;
+    padding-top: 80px;
     box-sizing: border-box;
 }
 
-/* =========================================
-   CAJA DEL FORMULARIO
-   ========================================= */
 .formulario {
-    background-color: #0a0a0a; /* Un gris casi negro para distinguir la caja */
+    background-color: #0a0a0a;
     width: 100%;
-    max-width: 400px; /* Que no sea gigante en pantallas grandes */
+    max-width: 400px;
     padding: 40px;
-    border: 1px solid #333; /* Borde sutil */
-    border-radius: 15px; /* Bordes redondeados */
-    box-shadow: 0 0 40px rgba(0, 0, 0, 0.8); /* Sombra para dar profundidad */
+    border: 1px solid #333;
+    border-radius: 15px;
+    box-shadow: 0 0 40px rgba(0, 0, 0, 0.8);
     text-align: center;
 }
 
-/* Título o cabecera (opcional si decides añadir un h2 dentro del div .formulario) */
 .formulario h2 {
     color: #00e5ff;
     text-transform: uppercase;
     margin-bottom: 30px;
 }
 
-/* =========================================
-   CAMPOS DE TEXTO (Clase .rellenar)
-   ========================================= */
 .rellenar {
     margin-bottom: 20px;
-    text-align: left; /* Las etiquetas quedan mejor a la izquierda */
+    text-align: left;
 }
 
 .rellenar label {
@@ -56,31 +44,27 @@ body.iniciar-sesion {
 .rellenar input {
     width: 100%;
     padding: 12px;
-    background-color: #111; /* Input oscuro */
+    background-color: #111;
     border: 1px solid #444;
     border-radius: 5px;
     color: #ffffff;
     font-size: 1rem;
-    outline: none; /* Quita el borde azul feo por defecto del navegador */
-    box-sizing: border-box; /* Para que el padding no deforme el ancho */
+    outline: none;
+    box-sizing: border-box;
     transition: 0.3s;
 }
 
-/* Efecto al hacer clic en el input */
 .rellenar input:focus {
-    border-color: #00e5ff; /* Borde azul neón */
-    box-shadow: 0 0 10px rgba(0, 229, 255, 0.2); /* Resplandor */
+    border-color: #00e5ff;
+    box-shadow: 0 0 10px rgba(0, 229, 255, 0.2);
 }
 
-/* =========================================
-   BOTÓN (Clase .entrar)
-   ========================================= */
 .entrar {
     width: 100%;
     padding: 12px;
     margin-top: 10px;
     background-color: transparent;
-    border: 2px solid #00e5ff; /* Borde Neón */
+    border: 2px solid #00e5ff;
     color: #00e5ff;
     font-size: 1rem;
     font-weight: bold;
@@ -91,16 +75,13 @@ body.iniciar-sesion {
 }
 
 .entrar:hover {
-    background-color: #00e5ff; /* Al pasar el ratón se rellena */
-    color: #000000; /* Letra negra */
+    background-color: #00e5ff;
+    color: #000000;
     box-shadow: 0 0 20px rgba(0, 229, 255, 0.4);
 }
 
-/* =========================================
-   MENSAJE DE ERROR
-   ========================================= */
 .mensaje-error {
-    background-color: rgba(255, 51, 51, 0.2); /* Rojo semitransparente */
+    background-color: rgba(255, 51, 51, 0.2);
     border: 1px solid #ff3333;
     color: #ffcccc;
     padding: 10px;
