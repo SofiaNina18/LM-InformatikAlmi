@@ -6,71 +6,118 @@ body.gestion {
     min-height: 100vh;
 }
 
-.tabla-gestion {
+.contenedor-gestion {
     max-width: 1200px;
     margin: 0 auto;
     padding: 20px;
 }
 
-.tabla-gestion h1 {
+h1 {
     text-align: center;
     color: #ffffff;
     text-transform: uppercase;
-    margin-bottom: 40px;
-    text-decoration: underline;
-    text-decoration-color: #00e5ff;
-    text-underline-offset: 10px;
+    margin-bottom: 30px;
+    border-bottom: 2px solid #333;
+    padding-bottom: 15px;
+}
+
+.menu-filtros {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 50px;
+    position: sticky;
+    top: 80px; 
+    background-color: rgba(0, 0, 0, 0.9);
+    padding: 15px;
+    border-radius: 10px;
+    border: 1px solid #333;
+    z-index: 99;
+}
+
+.boton-filtro {
+    background-color: #111;
+    color: #00e5ff;
+    border: 1px solid #00e5ff;
+    padding: 8px 15px;
+    text-decoration: none;
+    border-radius: 20px;
+    font-weight: bold;
+    font-size: 0.9rem;
+    transition: 0.3s;
+    text-transform: uppercase;
+}
+
+.boton-filtro:hover {
+    background-color: #00e5ff;
+    color: #000;
+    box-shadow: 0 0 10px rgba(0, 229, 255, 0.5);
+}
+
+.seccion-categoria {
+    margin-bottom: 60px;
+    scroll-margin-top: 160px; 
+}
+
+.titulo-categoria {
+    color: #fff;
+    background: linear-gradient(90deg, #00e5ff, transparent);
+    padding: 10px 20px;
+    border-radius: 5px;
+    margin-bottom: 15px;
+    text-transform: uppercase;
+    font-size: 1.5rem;
+}
+
+.tabla-container {
+    overflow-x: auto;
+    border-radius: 10px;
+    border: 1px solid #333;
 }
 
 table {
     width: 100%;
     border-collapse: collapse;
     background-color: #0a0a0a;
-    border-radius: 10px;
-    overflow: hidden;
-    box-shadow: 0 0 20px rgba(0,0,0,0.5);
-}
-
-thead {
-    background-color: #1a1a1a;
-    border-bottom: 2px solid #333;
 }
 
 th {
-    padding: 20px;
+    background-color: #1a1a1a;
+    color: #888;
+    padding: 15px;
     text-align: left;
-    color: #00e5ff;
     text-transform: uppercase;
-    font-size: 0.9rem;
+    font-size: 0.85rem;
     letter-spacing: 1px;
 }
 
 td {
-    padding: 15px 20px;
+    padding: 15px;
     border-bottom: 1px solid #222;
     vertical-align: middle;
-}
-
-tr:hover {
-    background-color: #111;
 }
 
 tr:last-child td {
     border-bottom: none;
 }
 
+tr:hover {
+    background-color: #111;
+}
+
 .col-img img {
-    width: 60px;
-    height: 60px;
+    width: 50px;
+    height: 50px;
     object-fit: contain;
-    background-color: #fff;
-    padding: 5px;
-    border-radius: 5px;
+    background: #fff;
+    padding: 2px;
+    border-radius: 4px;
 }
 
 .col-titulo {
-    font-weight: bold;
-    font-size: 1.1rem;
+    font-weight: 600;
+    font-size: 1rem;
     color: #eee;
 }
 
@@ -83,37 +130,35 @@ tr:last-child td {
     white-space: nowrap;
 }
 
-.editar-producto {
+.btn-editar {
     color: #00e5ff;
     text-decoration: none;
     font-weight: bold;
+    font-size: 0.8rem;
     margin-right: 15px;
+    border: 1px solid #00e5ff;
+    padding: 5px 10px;
+    border-radius: 4px;
     transition: 0.3s;
-    text-transform: uppercase;
-    font-size: 0.9rem;
 }
 
-.editar-producto:hover {
-    color: #fff;
-    text-shadow: 0 0 10px #00e5ff;
+.btn-editar:hover {
+    background-color: #00e5ff;
+    color: #000;
 }
 
-.eliminar-producto {
+.btn-eliminar {
     color: #ff3333;
     text-decoration: none;
     font-weight: bold;
+    font-size: 0.8rem;
+    border: 1px solid #ff3333;
+    padding: 5px 10px;
+    border-radius: 4px;
     transition: 0.3s;
-    text-transform: uppercase;
-    font-size: 0.9rem;
 }
 
-.eliminar-producto:hover {
+.btn-eliminar:hover {
+    background-color: #ff3333;
     color: #fff;
-    text-shadow: 0 0 10px #ff3333;
-}
-
-input, select, textarea {
-    display: none !important;
-    visibility: hidden !important;
-    opacity: 0 !important;
 }

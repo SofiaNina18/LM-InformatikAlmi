@@ -55,6 +55,14 @@ if (isset($_GET['borrar'])) {
         echo "<script>alert('Error al eliminar: " . $e['message'] . "');</script>";
     }
 }
+
+$categorias = [];
+$sql_cat = "SELECT * FROM CATEGORIAS ORDER BY ID_CATEGORIA ASC";
+$stmt_cat = oci_parse($conexion, $sql_cat);
+oci_execute($stmt_cat);
+while ($row = oci_fetch_assoc($stmt_cat)) {
+    $categorias[] = $row;
+}
 ?>
 
 <!DOCTYPE html>
@@ -71,45 +79,70 @@ if (isset($_GET['borrar'])) {
 
     <?php include 'menu.php'; ?>
 
-    <div class="tabla-gestion">
-        <h1>Modificar / Eliminar Productos</h1>
+    <div class="contenedor-gestion">
+        <h1>Gestión de Inventario</h1>
 
-        <div class="contenido">
-            <table>
-                <thead>
-                    <tr>
-                        <th>IMAGEN</th>
-                        <th>TÍTULO DEL PRODUCTO</th>
-                        <th>PRECIO</th>
-                        <th>ACCIONES</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <?php
-                    $sql = "SELECT * FROM PRODUCTOS ORDER BY id_categoria ASC, id_producto DESC";
-                    $stmt = oci_parse($conexion, $sql);
-                    oci_execute($stmt);
-
-                    while ($prod = oci_fetch_assoc($stmt)) {
-                        echo "<tr>";
-                        
-                        $ruta = !empty($prod['IMAGEN']) ? $prod['IMAGEN'] : 'images/sin_imagen.png';
-                        
-                        echo "<td class='col-img'><img src='$ruta' alt='Producto'></td>";
-                        echo "<td class='col-titulo'>{$prod['TITULO']}</td>";
-                        echo "<td class='col-precio'>{$prod['PRECIO']} €</td>";
-                        
-                        echo "<td class='col-acciones'>
-                                <a href='editar_producto.php?id={$prod['ID_PRODUCTO']}' class='editar-producto'>MODIFICAR</a> | 
-                                <a href='gestionar_productos.php?borrar={$prod['ID_PRODUCTO']}' class='eliminar-producto' onclick='return confirm(\"¿Estás seguro de borrar este producto? Se borrará de todos los pedidos y galerías.\")'>ELIMINAR</a>
-                              </td>";
-                        
-                        echo "</tr>";
-                    }
-                    ?>
-                </tbody>
-            </table>
+        <div class="menu-filtros">
+            <?php foreach ($categorias as $cat): ?>
+                <a href="#cat-<?php echo $cat['ID_CATEGORIA']; ?>" class="boton-filtro">
+                    <?php echo $cat['NOMBRE_CATEGORIA']; ?>
+                </a>
+            <?php endforeach; ?>
         </div>
+
+        <?php foreach ($categorias as $cat): ?>
+            
+            <?php
+            $cat_id = $cat['ID_CATEGORIA'];
+            $sql_prod = "SELECT * FROM PRODUCTOS WHERE id_categoria = :id ORDER BY id_producto DESC";
+            $stmt_prod = oci_parse($conexion, $sql_prod);
+            oci_bind_by_name($stmt_prod, ":id", $cat_id);
+            oci_execute($stmt_prod);
+            
+            $productos_encontrados = [];
+            while ($p = oci_fetch_assoc($stmt_prod)) {
+                $productos_encontrados[] = $p;
+            }
+            ?>
+
+            <?php if (count($productos_encontrados) > 0): ?>
+                <div id="cat-<?php echo $cat_id; ?>" class="seccion-categoria">
+                    <h2 class="titulo-categoria"><?php echo $cat['NOMBRE_CATEGORIA']; ?></h2>
+                    
+                    <div class="tabla-container">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>IMG</th>
+                                    <th>PRODUCTO</th>
+                                    <th>PRECIO</th>
+                                    <th>ACCIONES</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <?php foreach ($productos_encontrados as $prod): ?>
+                                    <tr>
+                                        <td class="col-img">
+                                            <?php $ruta = !empty($prod['IMAGEN']) ? $prod['IMAGEN'] : 'images/sin_imagen.png'; ?>
+                                            <img src="<?php echo $ruta; ?>" alt="img">
+                                        </td>
+                                        <td class="col-titulo"><?php echo $prod['TITULO']; ?></td>
+                                        <td class="col-precio"><?php echo $prod['PRECIO']; ?> €</td>
+                                        <td class="col-acciones">
+                                            <a href="editar_producto.php?id=<?php echo $prod['ID_PRODUCTO']; ?>" class="btn-editar">EDITAR</a>
+                                            <a href="gestionar_productos.php?borrar=<?php echo $prod['ID_PRODUCTO']; ?>" class="btn-eliminar" 
+                                               onclick="return confirm('¿Eliminar <?php echo $prod['TITULO']; ?>?')">BORRAR</a>
+                                        </td>
+                                    </tr>
+                                <?php endforeach; ?>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            <?php endif; ?>
+
+        <?php endforeach; ?>
+        
     </div>
 
 </body>
