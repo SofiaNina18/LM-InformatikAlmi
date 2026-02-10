@@ -206,7 +206,8 @@ input:focus {
 }
 
 .texto-derecho { 
-    right: 0; transform: translateX(0); 
+    right: 0; 
+    transform: translateX(0); 
 }
 .formulario-iniciar-sesion.activar-registro .texto-derecho { 
     transform: translateX(20%); 

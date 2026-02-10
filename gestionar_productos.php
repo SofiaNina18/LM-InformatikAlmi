@@ -15,11 +15,33 @@ if (isset($_GET['borrar'])) {
     $stmt_img = oci_parse($conexion, $sql_img);
     oci_bind_by_name($stmt_img, ":id", $id_borrar);
     oci_execute($stmt_img);
+    
     if ($fila = oci_fetch_assoc($stmt_img)) {
         if (!empty($fila['IMAGEN']) && file_exists($fila['IMAGEN'])) {
-            unlink($fila['IMAGEN']); 
+            unlink($fila['IMAGEN']);
         }
     }
+
+    $sql_galeria = "SELECT imagen FROM IMAGENES_GALERIA WHERE id_producto = :id";
+    $stmt_galeria = oci_parse($conexion, $sql_galeria);
+    oci_bind_by_name($stmt_galeria, ":id", $id_borrar);
+    oci_execute($stmt_galeria);
+
+    while ($fila_g = oci_fetch_assoc($stmt_galeria)) {
+        if (!empty($fila_g['IMAGEN']) && file_exists($fila_g['IMAGEN'])) {
+            unlink($fila_g['IMAGEN']);
+        }
+    }
+
+    $sql_del_gal = "DELETE FROM IMAGENES_GALERIA WHERE id_producto = :id";
+    $stmt_del_gal = oci_parse($conexion, $sql_del_gal);
+    oci_bind_by_name($stmt_del_gal, ":id", $id_borrar);
+    oci_execute($stmt_del_gal);
+
+    $sql_del_ped = "DELETE FROM PRODUCTOS_PEDIDOS WHERE ID_PRODUCTOS = :id";
+    $stmt_del_ped = oci_parse($conexion, $sql_del_ped);
+    oci_bind_by_name($stmt_del_ped, ":id", $id_borrar);
+    oci_execute($stmt_del_ped);
 
     $sql_del = "DELETE FROM PRODUCTOS WHERE id_producto = :id";
     $stmt_del = oci_parse($conexion, $sql_del);
@@ -28,6 +50,9 @@ if (isset($_GET['borrar'])) {
     if (oci_execute($stmt_del)) {
         header("Location: gestionar_productos.php"); 
         exit;
+    } else {
+        $e = oci_error($stmt_del);
+        echo "<script>alert('Error al eliminar: " . $e['message'] . "');</script>";
     }
 }
 ?>
@@ -76,7 +101,7 @@ if (isset($_GET['borrar'])) {
                         
                         echo "<td class='col-acciones'>
                                 <a href='editar_producto.php?id={$prod['ID_PRODUCTO']}' class='editar-producto'>MODIFICAR</a> | 
-                                <a href='gestionar_productos.php?borrar={$prod['ID_PRODUCTO']}' class='eliminar-producto' onclick='return confirm(\"¿Borrar producto?\")'>ELIMINAR</a>
+                                <a href='gestionar_productos.php?borrar={$prod['ID_PRODUCTO']}' class='eliminar-producto' onclick='return confirm(\"¿Estás seguro de borrar este producto? Se borrará de todos los pedidos y galerías.\")'>ELIMINAR</a>
                               </td>";
                         
                         echo "</tr>";
