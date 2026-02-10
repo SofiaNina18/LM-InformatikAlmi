@@ -1,14 +1,16 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contacto - SAYO</title>
+    <title>Contacto</title>
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/menu.css">
-    <link rel="stylesheet" href="css/contacto.css?v=99">
+    <link rel="stylesheet" href="css/contacto.css">
     <link rel="shortcut icon" href="images/logSayo.ico" type="image/x-icon">
 </head>
+
 <body class="contacto">
     <?php include 'menu.php'; ?>
 
@@ -75,10 +77,11 @@
                 </div>
 
                 <div class="mapa">
-                    <iframe width="100%" height="250" frameborder="0" src="https://maps.google.com/maps?q=Deusto,Bilbao&t=&z=13&ie=UTF8&iwloc=&output=embed"></iframe>
+                    <iframe width="100%" height="250" frameborder="0" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d6604.395159329867!2d-2.9515105236064842!3d43.27183007701292!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd4e503d5d438179%3A0x280c2779aeabb54b!2sAlmi%20Bilbao!5e1!3m2!1ses!2ses!4v1770711185446!5m2!1ses!2ses"></iframe>
                 </div>
             </div>
         </div>
     </div>
 </body>
+
 </html>
