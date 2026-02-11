@@ -43,7 +43,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $id_nuevo_producto = 0;
         oci_bind_by_name($stmt, ":id_nuevo", $id_nuevo_producto, -1, OCI_B_INT);
 
-        if (oci_execute($stmt)) {
+        if (@oci_execute($stmt, OCI_NO_AUTO_COMMIT)) {
+            $todo_ok = true;
+            
             if (!empty($_FILES['galeria']['name'][0])) {
                 $total_fotos = count($_FILES['galeria']['name']);
                 for ($i = 0; $i < $total_fotos; $i++) {
@@ -58,17 +60,38 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                         $stmt_gal = oci_parse($conexion, $sql_gal);
                         oci_bind_by_name($stmt_gal, ":id_prod", $id_nuevo_producto);
                         oci_bind_by_name($stmt_gal, ":img_path", $dest_gal);
-                        oci_execute($stmt_gal);
+                        
+                        if (!@oci_execute($stmt_gal, OCI_NO_AUTO_COMMIT)) {
+                            $e_gal = oci_error($stmt_gal);
+                            if ($e_gal['code'] == 1) {
+                                $error = "La imagen de galería '" . $nom_gal . "' ya existe. Cambia el nombre del archivo. No se ha guardado el producto.";
+                            } else {
+                                $error = "Error al guardar imágenes de galería: " . $e_gal['message'];
+                            }
+                            $todo_ok = false;
+                            break; 
+                        }
                     }
                 }
             }
-            $mensaje = "Producto y galería añadidos";
+            
+            if ($todo_ok) {
+                oci_commit($conexion);
+                $mensaje = "Producto y galería añadidos correctamente.";
+            } else {
+                oci_rollback($conexion);
+            }
+            
         } else {
             $e = oci_error($stmt);
-            $error = "Error al guardar en BD: " . $e['message'];
+            if ($e['code'] == 1) {
+                $error = "La imagen principal ya existe en la base de datos. Por favor, cambia el nombre del archivo.";
+            } else {
+                $error = "Error al guardar en BD: " . $e['message'];
+            }
         }
     } else {
-        $error = "Error al subir la imagen principal.";
+        $error = "Error al subir la imagen principal al servidor.";
     }
 }
 ?>
@@ -145,7 +168,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
             <div class="relleno-texto">
                 <label>Descripción:</label>
-                <textarea name="descripcion" rows="8" required placeholder="• Procesador..." ></textarea>
+                <textarea name="descripcion" rows="8" required placeholder="• Procesador..."></textarea>
             </div>
 
             <button type="submit" class="guardar">GUARDAR PRODUCTO</button>

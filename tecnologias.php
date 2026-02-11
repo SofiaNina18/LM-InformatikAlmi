@@ -34,6 +34,7 @@ elseif (isset($_GET['categoria'])) {
 <body class="tecnologia">
 
     <?php include 'menu.php'; ?>
+    
 
     <header class="titulo-tecnologia">
         <h1>CATÁLOGO SAYO</h1>

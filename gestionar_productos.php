@@ -79,6 +79,8 @@ while ($row = oci_fetch_assoc($stmt_cat)) {
 
     <?php include 'menu.php'; ?>
 
+    
+
     <div class="contenedor-gestion">
         <h1>Gestión de Inventario</h1>
 

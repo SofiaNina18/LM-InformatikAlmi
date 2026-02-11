@@ -1,0 +1,328 @@
+body.cuerpo-proyectos {
+    width: 100%;
+    overflow-x: hidden;
+    background-color: #000000; 
+    font-family: 'Segoe UI', sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+.primera-parte-sos {
+    padding: 140px 10% 80px;
+    background-color: #000000;
+}
+
+.primera-parte-sos h1 {
+    color: #ffffff;
+    font-size: 3.5rem;
+    margin-bottom: 60px;
+    font-weight: 800;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+.contenido-ambitos {
+    display: flex;
+    align-items: stretch;
+    justify-content: space-between;
+    gap: 40px;
+}
+
+.imagen-ambitos {
+    flex: 1;
+    display: flex;
+}
+
+.imagen-ambitos img {
+    width: 100%;
+    height: 100%;
+    border-radius: 15px;
+    border: 2px solid #00ff66;
+    box-shadow: 0 10px 40px rgba(0, 255, 102, 0.15);
+    object-fit: contain;
+    background-color: #0a0a0a;
+}
+
+.textos-ambitos {
+    flex: 1.2;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 15px;
+}
+
+.bloque-texto {
+    background: #0a0a0a;
+    padding: 20px 25px;
+    border-radius: 15px;
+    border-left: 5px solid #00ff66;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+    transition: 0.3s ease;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.bloque-texto:hover {
+    transform: translateX(10px);
+    background: #111111;
+}
+
+.bloque-texto h2 {
+    font-size: 1.6rem;
+    color: #00ff66;
+    margin-bottom: 8px;
+    text-transform: uppercase;
+    font-weight: 800;
+}
+
+.bloque-texto p {
+    color: #dddddd;
+    font-size: 1rem;
+    line-height: 1.6;
+}
+
+.tabla-interesados {
+    width: 100%;
+    padding: 80px 20px;
+    background-color: #050505;
+}
+
+.tabla-interesados h1 {
+    color: #ffffff;
+    font-size: 3rem;
+    text-align: center;
+    margin-bottom: 60px;
+    font-weight: 800;
+    text-transform: uppercase;
+}
+
+.contenedor-tabla {
+    max-width: 1200px;
+    margin: 0 auto;
+    overflow-x: auto;
+}
+
+.tabla-interesados table {
+    width: 100%;
+    border-collapse: collapse;
+    background: #0a0a0a;
+    border-radius: 10px;
+    overflow: hidden;
+    border: 1px solid #1a1a1a;
+}
+
+.tabla-interesados table tr:first-child td {
+    background: #00ff66;
+    color: #000000;
+    font-weight: bold;
+    font-size: 1.1rem;
+    padding: 20px;
+    text-transform: uppercase;
+}
+
+.tabla-interesados table td {
+    padding: 18px;
+    color: #eeeeee;
+    border-bottom: 1px solid #222222;
+}
+
+.tabla-interesados table tr:last-child td {
+    border-bottom: none;
+}
+
+.tabla-interesados table tr:hover {
+    background: #111111;
+}
+
+.seccion-sostenibilidad {
+    width: 100%;
+    padding: 80px 20px 80px;
+    background-color: #000000;
+}
+
+.seccion-sostenibilidad h1 {
+    color: #ffffff;
+    font-size: 3rem;
+    text-align: center;
+    margin-bottom: 60px;
+    font-weight: 800;
+    text-transform: uppercase;
+}
+
+.contenedor-carrusel {
+    position: relative;
+    width: 1200px;
+    max-width: 100%;
+    height: 650px;
+    background: #0a0a0a;
+    margin: 0 auto;
+    border-radius: 20px;
+    box-shadow: 0 20px 50px rgba(0, 255, 102, 0.1);
+    overflow: hidden;
+    border: 1px solid #1a1a1a;
+}
+
+.carrusel-deslizador {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+.carrusel-elemento {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-position: center;
+    background-size: cover;
+    opacity: 0;
+    transform: translateX(50px);
+    transition: all 0.6s ease-in-out;
+    z-index: 1;
+}
+
+.carrusel-elemento.activo {
+    opacity: 1;
+    transform: translateX(0);
+    z-index: 2;
+}
+
+.carrusel-contenido {
+    position: absolute;
+    top: 50%;
+    right: 50px; 
+    width: 400px; 
+    text-align: left;
+    color: #ffffff;
+    transform: translateY(-50%);
+    background: rgba(0, 0, 0, 0.85);
+    padding: 30px;
+    border-radius: 15px;
+    border-right: 5px solid #00ff66; 
+    backdrop-filter: blur(5px);
+    opacity: 0;
+    transition: opacity 0.6s ease-in-out 0.3s;
+}
+
+.carrusel-elemento.activo .carrusel-contenido {
+    opacity: 1;
+}
+
+.carrusel-titulo {
+    font-size: 2.2rem; 
+    font-weight: 900;
+    color: #00ff66;
+    text-transform: uppercase;
+    margin-bottom: 15px;
+}
+
+.carrusel-descripcion {
+    font-size: 1rem;
+    line-height: 1.5;
+    color: #dddddd;
+}
+
+.carrusel-descripcion strong {
+    color: #ffffff;
+}
+
+.carrusel-controles {
+    position: absolute;
+    bottom: 30px;
+    width: 100%;
+    text-align: center;
+    z-index: 100;
+}
+
+.carrusel-controles button {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    border: 1px solid #00ff66;
+    transition: 0.3s;
+    background: #0a0a0a;
+    color: #00ff66;
+    cursor: pointer;
+    font-size: 20px;
+    margin: 0 10px;
+}
+
+.carrusel-controles button:hover {
+    background: #00ff66;
+    color: #000000;
+}
+
+.seccion-economia-circular {
+    padding: 80px 10% 140px;
+    background-color: #050505;
+}
+
+.seccion-economia-circular h1 {
+    color: #ffffff;
+    font-size: 3rem;
+    text-align: center;
+    margin-bottom: 60px;
+    font-weight: 800;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+.contenido-economia {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 40px;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.video-economia {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+}
+
+.video-economia video {
+    width: 100%;
+    max-width: 700px;
+    border-radius: 15px;
+    border: 2px solid #00ff66;
+    box-shadow: 0 10px 40px rgba(0, 255, 102, 0.15);
+    background-color: #0a0a0a;
+}
+
+.texto-economia {
+    flex: 1;
+}
+
+.lista-economia {
+    list-style: none;
+    padding: 0;
+    margin-top: 20px;
+}
+
+.lista-economia li {
+    color: #dddddd;
+    font-size: 1.1rem;
+    line-height: 1.6;
+    margin-bottom: 20px;
+    padding-left: 30px;
+    position: relative;
+}
+
+.lista-economia li::before {
+    content: '✔';
+    color: #00ff66;
+    font-weight: bold;
+    font-size: 1.2rem;
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+
+.lista-economia strong {
+    color: #ffffff;
+}
