@@ -21,8 +21,6 @@ h1 {
     padding-bottom: 15px;
 }
 
-<<<<<<< HEAD
-=======
 .menu-filtros {
     display: flex;
     justify-content: center;
@@ -78,7 +76,6 @@ h1 {
     border: 1px solid #333;
 }
 
->>>>>>> feature/tecnologia
 table {
     width: 100%;
     border-collapse: collapse;
