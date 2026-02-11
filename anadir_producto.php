@@ -145,8 +145,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
             <div class="relleno-texto">
                 <label>Descripción:</label>
-                <p class="nota">Usa &lt;br&gt; para saltos de línea y • para puntos.</p>
-                <textarea name="descripcion" rows="8" required placeholder="• Procesador... <br> • Pantalla..."></textarea>
+                <textarea name="descripcion" rows="8" required placeholder="• Procesador..." ></textarea>
             </div>
 
             <button type="submit" class="guardar">GUARDAR PRODUCTO</button>
